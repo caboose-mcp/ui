@@ -100,20 +100,15 @@ jobs:
         run: |
           SHA="${{ github.event.client_payload.sha }}"
           MSG="${{ github.event.client_payload.message }}"
+          TITLE="chore: update changelog from caboose-mcp@${SHA:0:7}"
           BODY="Automated changelog update from [caboose-mcp@${SHA:0:7}](https://github.com/caboose-mcp/caboose-mcp/commit/${SHA}).
 
           **Trigger commit:** ${MSG}
 
           Merge to deploy the updated changelog to \`ui.mcp.chrismarasco.io\`."
 
-          # Create PR if it doesn't exist; ignore error if it already does
-          gh pr create \
-            --base main \
-            --head update/changelog \
-            --title "chore: update changelog from caboose-mcp@${SHA:0:7}" \
-            --body "$BODY" \
-            2>/dev/null || \
-          gh pr edit update/changelog \
-            --title "chore: update changelog from caboose-mcp@${SHA:0:7}" \
-            --body "$BODY" \
-            2>/dev/null || true
+          # Try create; if it already exists, update it
+          if ! gh pr create --base main --head update/changelog --title "$TITLE" --body "$BODY"; then
+            PR=$(gh pr list --head update/changelog --json number --jq '.[0].number')
+            gh pr edit "$PR" --title "$TITLE" --body "$BODY"
+          fi
