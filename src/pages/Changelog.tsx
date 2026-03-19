@@ -11,7 +11,7 @@ export type ChangelogEntry = {
 }
 
 const ALL_TAGS = ['feat', 'fix', 'docs', 'ci', 'chore', 'refactor', 'style', 'test', 'perf', 'other']
-const LIMITS = [25, 50, 100, 0] // 0 = all
+const LIMITS = [10, 25, 50, 100, 0] // 0 = all
 const changelogData = changelogJson as ChangelogEntry[]
 
 const TAG_STYLES: Record<string, string> = {
@@ -31,7 +31,7 @@ export default function Changelog() {
   const [search, setSearch] = useState('')
   const [activeTag, setActiveTag] = useState<string | null>(null)
   const [sortAsc, setSortAsc] = useState(false)
-  const [limit, setLimit] = useState(25)
+  const [limit, setLimit] = useState(10)
 
   const filtered = useMemo(() => {
     let entries = [...changelogData]
