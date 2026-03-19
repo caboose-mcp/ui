@@ -39,7 +39,7 @@ export default function Footer() {
             <p className="text-xs font-medium text-text-secondary uppercase tracking-wider mb-2">Resources</p>
             <div className="flex flex-col gap-1">
               {[
-                { href: 'https://github.com/cxm6467/caboose-mcp', label: 'GitHub' },
+                { href: 'https://github.com/caboose-mcp/caboose-mcp', label: 'GitHub' },
                 { href: 'https://mcp.chrismarasco.io/mcp', label: 'Live Endpoint' },
                 { href: 'https://chris.marasco.io', label: 'Chris Marasco' },
               ].map(({ href, label }) => (
