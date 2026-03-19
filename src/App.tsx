@@ -21,7 +21,7 @@ export default function App() {
   }, [])
 
   return (
-    <BrowserRouter basename="/ui">
+    <BrowserRouter basename="/">
       <div className="min-h-screen flex flex-col">
         {experimental && <ExperimentalBanner />}
         <Navbar />
