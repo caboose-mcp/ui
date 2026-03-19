@@ -19,7 +19,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <img
-              src="/ui/logo.png"
+              src="/logo.png"
               alt="caboose-mcp"
               className="w-7 h-7 rounded-md object-cover"
             />
