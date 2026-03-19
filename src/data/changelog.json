@@ -1,9 +1,353 @@
 [
   {
-    "hash": "placeholder",
-    "date": "2026-03-19T00:00:00Z",
-    "subject": "feat: JWT RBAC auth, React web UI, multi-stage Docker, CI/CD improvements",
+    "hash": "8320b880140079c17ad9e0512c3806450967cf1c",
+    "date": "2026-03-19T14:00:43-04:00",
+    "subject": "fix: auth only required when MCP_AUTH_TOKEN is set (#16)",
+    "author": "Chris",
+    "tags": [
+      "fix"
+    ]
+  },
+  {
+    "hash": "a6dcf2e578a802fadabb0cf6d0b924567135edbf",
+    "date": "2026-03-19T13:52:23-04:00",
+    "subject": "feat: extract UI to standalone caboose-mcp/ui repo (#15)",
+    "author": "Chris",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "1540c06c09485f36c0fa4e316846e55ecc1ed197",
+    "date": "2026-03-19T13:28:14-04:00",
+    "subject": "feat: agency-agents integration \u2014 context-aware tool hints (#13)",
+    "author": "Chris",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "eb7294e2a3cb077d7a4411a7deb6e9fcd1ec09f7",
+    "date": "2026-03-19T11:40:27-04:00",
+    "subject": "feat: add ElevenLabs TTS voice replies for Discord and Slack bots (#12)",
+    "author": "Chris",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "00a672b2c4e38b034e3587fd590a86fbf4c20990",
+    "date": "2026-03-19T11:19:19-04:00",
+    "subject": "feat: replace Zap icon with caboose logo image",
     "author": "Chris Marasco",
-    "tags": ["feat"]
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "1e059545fa2ff50b5063d09fbaee228e7738d453",
+    "date": "2026-03-19T11:15:06-04:00",
+    "subject": "fix: Terraform state drift \u2014 S3 backend + OpenTofu in CI",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ]
+  },
+  {
+    "hash": "fe2e4825044d97b16b7fae8739896c8ad8b1256e",
+    "date": "2026-03-19T11:12:53-04:00",
+    "subject": "feat: experimental mode flag (CABOOSE_ENV) + disclaimer banner",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "16464a64d2f0fd39873bad2cf83f41c0d81b30cf",
+    "date": "2026-03-19T10:56:44-04:00",
+    "subject": "chore: improve error handling for auth errors to keep server running (#11)",
+    "author": "Chris",
+    "tags": [
+      "chore"
+    ]
+  },
+  {
+    "hash": "8adba742fb350beb1fe83a32f2028bbb4426a7ac",
+    "date": "2026-03-19T10:19:38-04:00",
+    "subject": "feat: add ElevenLabs TTS voice replies for Discord and Slack bots (#10)",
+    "author": "Chris",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "33ca21a6699a5b8aaf232ae06984f664a47a431b",
+    "date": "2026-03-19T01:29:33-04:00",
+    "subject": "fix: deploy-app workflow \u2014 secrets context not allowed in if expressions",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ]
+  },
+  {
+    "hash": "1296e6e10e54495648d707b0718b67771082e769",
+    "date": "2026-03-19T01:14:14-04:00",
+    "subject": "feat: add ElevenLabs TTS voice replies for Discord and Slack bots (#9)",
+    "author": "Chris",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "4c6ad6a88c6f4e3c9e49e49f16fe8081cfd2629e",
+    "date": "2026-03-19T01:11:38-04:00",
+    "subject": "feat: JWT RBAC auth, React web UI, multi-stage Docker, CI/CD gates (#8)",
+    "author": "Chris",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "7948073c827f3dab71e95befa8e9c00e72a840cd",
+    "date": "2026-03-19T00:48:03-04:00",
+    "subject": "feat: add ElevenLabs TTS voice replies for Discord and Slack bots",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "aa58a0cb01591f2d3b021564c740f49470d66103",
+    "date": "2026-03-18T23:58:17-04:00",
+    "subject": "Merge pull request #7 from caboose-mcp/feat/tool-tiers",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "hash": "57c55dee478f3d77b0bc52336a0fa34b47324295",
+    "date": "2026-03-18T23:58:08-04:00",
+    "subject": "feat: tool tiers, release workflow, setup guide, updated docs",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "4f6a33fcd623d6afbcf0c537bd27eea1d1432c85",
+    "date": "2026-03-18T23:51:39-04:00",
+    "subject": "feat: split tools into hosted/local/combined tiers",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "42d3d05091a9b153a03f100ecb45f89a4e79df31",
+    "date": "2026-03-18T23:42:43-04:00",
+    "subject": "Merge pull request #6 from caboose-mcp/feat/bots-flag",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "hash": "14b83d3005427e7695c68486f8abc31b328bd07f",
+    "date": "2026-03-18T23:42:39-04:00",
+    "subject": "merge: resolve conflicts keeping feat/bots-flag changes",
+    "author": "Chris Marasco",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "hash": "da61b69960c2ce4ed2af16299d32ed14999a0a35",
+    "date": "2026-03-18T23:42:09-04:00",
+    "subject": "feat: complete Bruno collection \u2014 120 requests across 24 categories",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "20cdd19bff11cf0b37f7c4953bb5f7340c92b72f",
+    "date": "2026-03-18T23:13:16-04:00",
+    "subject": "fix: accept 401 in ALB health check matcher for authenticated /mcp endpoint",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ]
+  },
+  {
+    "hash": "30b5604c6d242062a28025839b1182fddb23afa7",
+    "date": "2026-03-18T22:13:59-04:00",
+    "subject": "feat: add Bruno collection for MCP HTTP endpoint testing",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "dd212008f149e769c9a6256e2fefc52b42b36e3d",
+    "date": "2026-03-18T22:10:25-04:00",
+    "subject": "feat: secrets sync, bot session memory, terraform access key fix",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "9ee8eca97e03c573405c90cf1257e17113322808",
+    "date": "2026-03-18T08:00:06-04:00",
+    "subject": "feat: Slack Socket Mode bot + --bots flag for concurrent bots (#1)",
+    "author": "Chris",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "4f701e96ccc562aea3d5a79e81711f87d5bf872c",
+    "date": "2026-03-18T07:59:24-04:00",
+    "subject": "fix: resolve all duplicate symbol and type mismatch errors from copilot merge",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ]
+  },
+  {
+    "hash": "a7ca3b9fee8d18e05a2738b51b590cdc6d7ad883",
+    "date": "2026-03-18T07:53:00-04:00",
+    "subject": "Apply suggestions from code review",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "hash": "7ccc03aec95e19bb753b1b5bf8283440ff9306f4",
+    "date": "2026-03-18T07:46:20-04:00",
+    "subject": "Initial plan (#5)",
+    "author": "Copilot",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "hash": "f00f14025c7bdc55e65fc4f5f10a4a463dc901cf",
+    "date": "2026-03-18T07:43:26-04:00",
+    "subject": "Merge pull request #4 from caboose-mcp/copilot/sub-pr-1-again",
+    "author": "Copilot",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "hash": "bd34377ddc1dfde98bf1916a3b774c2f994199bc",
+    "date": "2026-03-18T07:37:48-04:00",
+    "subject": "Merge pull request #3 from caboose-mcp/feat/aws-ecs",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "hash": "8318332228d31862ce76cf54544ae536c1e64f5c",
+    "date": "2026-03-18T07:37:21-04:00",
+    "subject": "feat: GitHub Actions deploy workflows and resolve merge conflicts",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "630a7f0900b36dfd6fcfcfdc123d8ce27cc9e373",
+    "date": "2026-03-18T07:29:45-04:00",
+    "subject": "Merge branch 'feat/aws-ecs' into feat/bots-flag",
+    "author": "Chris Marasco",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "hash": "facdfadd924b0c3e89f5119caf2df0d0636c6862",
+    "date": "2026-03-18T07:28:40-04:00",
+    "subject": "feat: ECS Fargate hosting with ALB, HTTPS, ACM cert for mcp.chrismarasco.io",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "2300e06e2f458c830a8d58653905a8ffc4c4fb15",
+    "date": "2026-03-18T11:25:18Z",
+    "subject": "fix: address all PR review comments - add missing symbols, restore DiscordWebhookURL, fix go.mod",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "fix"
+    ]
+  },
+  {
+    "hash": "a5e18c446ce98d9ecef1164c13e791c7c58e32c3",
+    "date": "2026-03-18T07:24:13-04:00",
+    "subject": "fix: add missing bot agent files and DiscordWebhookURL config field",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ]
+  },
+  {
+    "hash": "0b3e39411dfd6b4f402f4a3bcefb8e5a695cbf8e",
+    "date": "2026-03-18T11:17:08Z",
+    "subject": "Initial plan",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ]
+  },
+  {
+    "hash": "70fd511183225358d657b30ab0b8eee839d381ef",
+    "date": "2026-03-18T07:08:09-04:00",
+    "subject": "feat: Slack Socket Mode bot with ChatProvider integration",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "c52e18519087107eaf0b84ce0b23ad2533ad1a03",
+    "date": "2026-03-18T07:06:19-04:00",
+    "subject": "feat: add --bots flag to run Slack and Discord bots concurrently",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "9b3245f3e4aed7253ae45a1e7c4b4f50f98fea38",
+    "date": "2026-03-18T05:49:45-04:00",
+    "subject": "fix: docker compose build context paths and pull_policy",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ]
+  },
+  {
+    "hash": "29e3ddd85eb0bb60f4f23cb70f99417bd3180e8e",
+    "date": "2026-03-18T05:45:06-04:00",
+    "subject": "feat: env_check/env_fix tools, discord webhook, n8n discord notify, ci fix",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ]
+  },
+  {
+    "hash": "a72a48d5fd1c68dab3a9112cfdff3a57e2edeb52",
+    "date": "2026-03-18T05:00:24-04:00",
+    "subject": "chore: init caboose-mcp monorepo",
+    "author": "Chris Marasco",
+    "tags": [
+      "chore"
+    ]
   }
 ]
