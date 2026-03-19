@@ -1,0 +1,120 @@
+# update-pr.yml — triggered by caboose-mcp's notify-ui.yml via repository_dispatch.
+#
+# Flow:
+#   1. caboose-mcp pushes to main → fires "caboose-mcp-updated" dispatch with commit SHA
+#   2. This workflow clones caboose-mcp at that SHA and regenerates src/data/changelog.json
+#   3. Creates or force-updates branch "update/changelog" and opens a PR against main
+#   4. CI runs on the PR; merging it triggers deploy.yml
+#
+# Required secret:
+#   CABOOSE_MCP_READ_TOKEN — fine-grained PAT with Contents: read on caboose-mcp/caboose-mcp
+#                            (only needed if the caboose-mcp repo is private)
+#                            If public, remove the token from the checkout step.
+
+name: Update changelog PR
+
+on:
+  repository_dispatch:
+    types: [caboose-mcp-updated]
+
+jobs:
+  update-pr:
+    name: Regenerate changelog and open PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout UI repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Clone caboose-mcp at dispatched SHA
+        uses: actions/checkout@v4
+        with:
+          repository: caboose-mcp/caboose-mcp
+          ref: ${{ github.event.client_payload.sha }}
+          token: ${{ secrets.CABOOSE_MCP_READ_TOKEN }}
+          path: _caboose-mcp
+          fetch-depth: 50
+
+      - name: Regenerate changelog.json from caboose-mcp history
+        run: |
+          cd _caboose-mcp
+          git log --pretty=format:'{"hash":"%H","date":"%aI","subject":"%s","author":"%an"}' -50 \
+          | python3 -c "
+          import sys, json, re
+          entries = []
+          for line in sys.stdin:
+              line = line.strip()
+              if not line: continue
+              try:
+                  e = json.loads(line)
+              except json.JSONDecodeError:
+                  continue
+              tags = re.findall(r'^(feat|fix|docs|ci|chore|refactor|style|test|perf)', e['subject'])
+              e['tags'] = tags if tags else ['other']
+              e['hash'] = e['hash'][:40]
+              entries.append(e)
+          print(json.dumps(entries, indent=2))
+          " > ../src/data/changelog.json
+          cd ..
+          echo "Generated $(wc -l < src/data/changelog.json) lines of changelog"
+
+      - name: Cleanup clone
+        run: rm -rf _caboose-mcp
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create or reset update/changelog branch
+        run: |
+          git fetch origin || true
+          if git ls-remote --exit-code origin update/changelog; then
+            git checkout update/changelog
+            git reset --hard origin/main
+          else
+            git checkout -b update/changelog
+          fi
+
+      - name: Commit changelog
+        run: |
+          git add src/data/changelog.json
+          if git diff --cached --quiet; then
+            echo "No changelog changes — skipping PR"
+            exit 0
+          fi
+          SHA="${{ github.event.client_payload.sha }}"
+          git commit -m "chore: update changelog from caboose-mcp@${SHA:0:7}"
+
+      - name: Push branch
+        run: git push --force origin update/changelog
+
+      - name: Create or update PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          SHA="${{ github.event.client_payload.sha }}"
+          MSG="${{ github.event.client_payload.message }}"
+          BODY="Automated changelog update from [caboose-mcp@${SHA:0:7}](https://github.com/caboose-mcp/caboose-mcp/commit/${SHA}).
+
+          **Trigger commit:** ${MSG}
+
+          Merge to deploy the updated changelog to \`ui.mcp.chrismarasco.io\`."
+
+          # Create PR if it doesn't exist; ignore error if it already does
+          gh pr create \
+            --base main \
+            --head update/changelog \
+            --title "chore: update changelog from caboose-mcp@${SHA:0:7}" \
+            --body "$BODY" \
+            2>/dev/null || \
+          gh pr edit update/changelog \
+            --title "chore: update changelog from caboose-mcp@${SHA:0:7}" \
+            --body "$BODY" \
+            2>/dev/null || true
