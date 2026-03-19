@@ -97,9 +97,9 @@ jobs:
       - name: Create or update PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ github.event.client_payload.sha }}
+          MSG: ${{ github.event.client_payload.message }}
         run: |
-          SHA="${{ github.event.client_payload.sha }}"
-          MSG="${{ github.event.client_payload.message }}"
           TITLE="chore: update changelog from caboose-mcp@${SHA:0:7}"
           BODY="Automated changelog update from [caboose-mcp@${SHA:0:7}](https://github.com/caboose-mcp/caboose-mcp/commit/${SHA}).
 
