@@ -76,7 +76,7 @@ export default function Changelog() {
           <h1 className="text-2xl font-bold text-text-primary">Changelog</h1>
         </div>
         <p className="text-sm text-text-secondary">
-          Auto-generated from git history on every deploy. Each entry links to the GitHub commit.
+          Auto-generated from git history when our release workflow runs. Each entry links to the GitHub commit.
         </p>
       </div>
 
