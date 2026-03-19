@@ -37,7 +37,6 @@ jobs:
         with:
           repository: caboose-mcp/caboose-mcp
           ref: ${{ github.event.client_payload.sha }}
-          token: ${{ secrets.CABOOSE_MCP_READ_TOKEN }}
           path: _caboose-mcp
           fetch-depth: 50
 
