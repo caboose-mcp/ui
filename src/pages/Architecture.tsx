@@ -16,7 +16,9 @@ export default function Architecture() {
             className="w-full h-screen"
             title="Caboose MCP Architecture Overview"
             allowFullScreen
-            frameBorder="0"
+            sandbox="allow-scripts allow-popups allow-presentation"
+            referrerPolicy="strict-origin-when-cross-origin"
+            loading="lazy"
           />
         </div>
       </div>
