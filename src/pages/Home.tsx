@@ -5,6 +5,7 @@ import {
   Shield, Bot, Server
 } from 'lucide-react'
 import { TOOL_COUNT } from '../data/tools'
+import Spotlight from '../components/Spotlight'
 
 const STATS = [
   { value: `${TOOL_COUNT}+`, label: 'MCP Tools' },
@@ -177,6 +178,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Spotlight */}
+      <Spotlight />
 
       {/* Feature groups */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8">

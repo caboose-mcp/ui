@@ -15,6 +15,7 @@ export type ToolDef = {
   sandboxable?: boolean
   tier: 'hosted' | 'local' | 'both'
   tags?: string[]
+  highlighted?: boolean
 }
 
 export const CATEGORIES = [
@@ -931,6 +932,24 @@ export const TOOLS: ToolDef[] = [
     description: 'Check the current setup status — which services are configured, which are missing.',
     params: [],
     example: { input: {}, output: '✓ Google Calendar\n✓ Slack\n✓ Discord\n✗ Bambu (BAMBU_IP not set)\n✗ PostgreSQL (POSTGRES_URL not set)' },
+  },
+
+  // ── Fun & Entertainment ──────────────────────────────────────────────────────
+  {
+    name: 'chuck_norris_joke',
+    category: 'misc',
+    tier: 'hosted',
+    tags: ['fun', 'api', 'read-only'],
+    highlighted: true,
+    description: 'Fetch a random Chuck Norris joke from the chuck norris API. Optionally filter by category.',
+    params: [
+      { name: 'category', type: 'string', required: false, description: 'Optional category (e.g., career, celebrity, explicit). Returns random joke if not specified.' },
+    ],
+    sandboxable: true,
+    example: {
+      input: { category: 'career' },
+      output: 'Chuck Norris Joke (career):\n\nChuck Norris solved the halting problem.',
+    },
   },
 ]
 
