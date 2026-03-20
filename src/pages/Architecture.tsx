@@ -1,6 +1,6 @@
 export default function Architecture() {
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="min-h-screen bg-bg animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-text-primary mb-2">Architecture</h1>
@@ -16,9 +16,9 @@ export default function Architecture() {
             className="w-full h-screen"
             title="Caboose MCP Architecture Overview"
             allowFullScreen
-            frameBorder="0"
-            sandbox="allow-same-origin allow-scripts allow-presentation"
+            sandbox="allow-scripts allow-popups allow-presentation"
             referrerPolicy="strict-origin-when-cross-origin"
+            loading="lazy"
           />
         </div>
       </div>
