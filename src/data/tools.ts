@@ -1020,6 +1020,7 @@ export const TOOLS: ToolDef[] = [
     category: 'sandbox',
     tier: 'hosted',
     tags: ['preview', 'safety'],
+    sandboxable: true,
     description: 'Run a command in a temp directory sandbox and preview the changes without touching your real files.',
     params: [
       { name: 'command', type: 'string', required: true, description: 'Command to run in the sandbox' },
@@ -1031,6 +1032,7 @@ export const TOOLS: ToolDef[] = [
     category: 'sandbox',
     tier: 'hosted',
     tags: ['preview', 'read-only'],
+    sandboxable: true,
     description: 'Show a diff of changes made in the last sandbox run.',
     params: [],
     example: { input: {}, output: '--- a/main.go\n+++ b/main.go\n@@ -5,1 +5,1 @@\n-foo := "old"\n+bar := "old"' },
@@ -1042,6 +1044,7 @@ export const TOOLS: ToolDef[] = [
     category: 'sandbox',
     tier: 'hosted',
     tags: ['preview', 'read-only'],
+    sandboxable: true,
     description: 'List all active sandboxes with their ID, source directory, and age.',
     params: [],
     example: { input: {}, output: '2 active sandboxes:\n• sb-1742394600 — /home/caboose/dev/caboose-mcp (12m ago)\n• sb-1742391000 — /tmp/test-project (1h ago)' },
@@ -1051,6 +1054,7 @@ export const TOOLS: ToolDef[] = [
     category: 'sandbox',
     tier: 'hosted',
     tags: ['preview', 'ai'],
+    sandboxable: true,
     description: 'Preview a pending si_ suggestion in a sandbox without applying it to the real files.',
     params: [
       { name: 'id', type: 'string', required: true, description: 'Suggestion ID from si_list_pending' },
@@ -1062,6 +1066,7 @@ export const TOOLS: ToolDef[] = [
     category: 'sandbox',
     tier: 'hosted',
     tags: ['preview', 'write'],
+    sandboxable: true,
     description: 'Delete sandboxes by ID or by age (all sandboxes older than N minutes).',
     params: [
       { name: 'id', type: 'string', required: false, description: 'Sandbox ID to delete' },
