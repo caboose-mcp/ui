@@ -33,7 +33,8 @@ export default function Architecture() {
                   : 'bg-accent-green/10 border border-accent-green/30 text-accent-green'
               }`}
               title={`Switch to ${useAlternative ? 'primary' : 'alternative'} Gamma presentation`}
-              aria-label={`Current: ${useAlternative ? 'Alternative' : 'Primary'} presentation`}
+              aria-label={`Switch to ${useAlternative ? 'primary' : 'alternative'} Gamma presentation`}
+              aria-pressed={useAlternative}
             >
               {useAlternative ? 'Alternative' : 'Primary'} Presentation
             </button>
