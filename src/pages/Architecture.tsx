@@ -13,6 +13,11 @@ export default function Architecture() {
   const currentUrl = useAlternative ? GAMMA_URLS.alternative : GAMMA_URLS.primary
   const embedUrl = currentUrl.replace('/docs/', '/embed/docs/')
 
+  const handleToggle = () => {
+    setIsLoaded(false)
+    setUseAlternative(!useAlternative)
+  }
+
   return (
     <div className="min-h-screen bg-bg animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
