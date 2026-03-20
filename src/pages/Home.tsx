@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
   BookOpen, FlaskConical, KeyRound, ArrowRight,
@@ -6,13 +7,7 @@ import {
 } from 'lucide-react'
 import { TOOL_COUNT } from '../data/tools'
 import Spotlight from '../components/Spotlight'
-
-const STATS = [
-  { value: `${TOOL_COUNT}+`, label: 'MCP Tools' },
-  { value: '6', label: 'Categories' },
-  { value: '2', label: 'Chat Bots' },
-  { value: 'JWT', label: 'Auth Model' },
-]
+import { fetchStats } from '../lib/api'
 
 const FEATURE_GROUPS = [
   {
@@ -89,6 +84,23 @@ const RESPONSE_EXAMPLE = `{
 }`
 
 export default function Home() {
+  const [liveCount, setLiveCount] = useState<number | null>(null)
+
+  useEffect(() => {
+    fetchStats()
+      .then(s => setLiveCount(s.total))
+      .catch(() => { /* fall back to static TOOL_COUNT */ })
+  }, [])
+
+  const toolCount = liveCount ?? TOOL_COUNT
+
+  const STATS = [
+    { value: `${toolCount}+`, label: 'MCP Tools' },
+    { value: '6', label: 'Categories' },
+    { value: '2', label: 'Chat Bots' },
+    { value: 'JWT', label: 'Auth Model' },
+  ]
+
   return (
     <div className="animate-fade-in">
       {/* Hero */}
@@ -112,7 +124,7 @@ export default function Home() {
               <span className="text-accent-green">supercharged</span>
             </h1>
             <p className="text-lg text-text-secondary leading-relaxed mb-8 max-w-2xl">
-              caboose-mcp is a Go server exposing {TOOL_COUNT}+ MCP tools to Claude, VS Code, Discord, and Slack.
+              caboose-mcp is a Go server exposing {toolCount}+ MCP tools to Claude, VS Code, Discord, and Slack.
               Calendar, notes, focus sessions, GitHub, Docker, databases — all in one JSON-RPC endpoint.
             </p>
 
