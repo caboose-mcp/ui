@@ -17,7 +17,7 @@ export default function Architecture() {
   const handleToggle = () => {
     setIsLoaded(false)
     setHasError(false)
-    setUseAlternative(!useAlternative)
+    setUseAlternative(prev => !prev)
   }
 
   const handleIframeError = () => {
