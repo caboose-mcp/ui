@@ -1,5 +1,95 @@
 [
   {
+    "hash": "40a7025dc548e0a10795b623bef6186c6bef5ad3",
+    "date": "2026-03-20T17:29:53-04:00",
+    "subject": "Merge pull request #21 from caboose-mcp/feat/chuck-norris-both-modes",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "392a9b8101f5e08522bda2cd97084f4f5a440ee7",
+    "date": "2026-03-20T17:28:27-04:00",
+    "subject": "feat: update chuck_norris_joke tier to 'both' for hosted, local, and combined modes",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "24ac8542ea1130fef81a49832e055c374f835f71",
+    "date": "2026-03-20T14:00:56-04:00",
+    "subject": "Merge pull request #20 from caboose-mcp/feat/chuck-norris-spotlight",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "74c56f0f9987086513dddf2991d9c444d49ac096",
+    "date": "2026-03-20T13:55:17-04:00",
+    "subject": "chore: resolve merge conflicts with origin/main",
+    "author": "Chris Marasco",
+    "tags": [
+      "chore"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "fceb03ab3bb5531880ef209e312feb323e82cc9b",
+    "date": "2026-03-20T13:32:40-04:00",
+    "subject": "feat: add chuck norris spotlight tool with highlighted section",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "fef25b701e098971053dced407797ae393231632",
+    "date": "2026-03-20T13:19:38-04:00",
+    "subject": "Merge pull request #18 from caboose-mcp/feat/dynamic-tool-count",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "7f82348f82e7922c54472939932131da556bb593",
+    "date": "2026-03-20T12:42:03-04:00",
+    "subject": "feat: dynamic tool count, complete 117-tool catalog, fix tiers",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "ddbee12036c90484b620ae9da614e9a2a1ceb164",
+    "date": "2026-03-20T01:47:43-04:00",
+    "subject": "Merge pull request #17 from caboose-mcp/feat/multi-repo-changelog",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "682a5080f5b843fb69a8b3f89d51f945fe18e391",
+    "date": "2026-03-20T01:46:01-04:00",
+    "subject": "feat: replace Gamma embed with multi-repo changelog",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "ui"
+  },
+  {
     "hash": "e0f6ac3da5ed3dc90a926575ee42b0171531ec02",
     "date": "2026-03-20T01:09:46-04:00",
     "subject": "Merge pull request #15 from caboose-mcp/copilot/sub-pr-13-again",

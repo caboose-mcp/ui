@@ -1,5 +1,375 @@
 [
   {
+    "hash": "83265097add5ae342929536768124c62a9868ee3",
+    "date": "2026-03-20T17:40:49-04:00",
+    "subject": "Merge pull request #33 from caboose-mcp/feat/chuck-norris-both-modes",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "9bef0e4903d426a356c1cca0e495721b0080ea70",
+    "date": "2026-03-20T17:39:30-04:00",
+    "subject": "Update packages/server/tools/slack.go",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "f2b3a58d28cd5e07cbd38fc0971e8949061ba699",
+    "date": "2026-03-20T17:39:23-04:00",
+    "subject": "Update packages/server/tools/discord.go",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "228c07b2f720c3e35c6dedad83c1dbeff0c025c8",
+    "date": "2026-03-20T17:35:08-04:00",
+    "subject": "chore: improve setup error messages with actionable guidance",
+    "author": "Chris Marasco",
+    "tags": [
+      "chore"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "6e73de77a06dc8bce6f04c9fc11da6c40e49d896",
+    "date": "2026-03-20T17:30:29-04:00",
+    "subject": "Merge pull request #32 from caboose-mcp/feat/chuck-norris-both-modes",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "2fb02de7873c6cfb554eca07e68e7a90e2f730f1",
+    "date": "2026-03-20T17:28:27-04:00",
+    "subject": "feat: make chuck_norris_joke available in both hosted and local modes",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "2ca084881c5b4b91afdeff483660cb5167939bd2",
+    "date": "2026-03-20T17:26:34-04:00",
+    "subject": "feat: make chuck_norris_joke available in both hosted and local modes",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "969fbe029af8c6bf43d53374b4bb63be1c8124ef",
+    "date": "2026-03-20T16:52:34-04:00",
+    "subject": "Merge pull request #29 from caboose-mcp/consolidate/oauth-chuck-norris",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "2eb53e98a981c7a77ca1c243161a086eda2846a2",
+    "date": "2026-03-20T16:43:28-04:00",
+    "subject": "Merge pull request #31 from caboose-mcp/copilot/sub-pr-29",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "9a40ad630825cc991db024fc9ad29f6a609e1482",
+    "date": "2026-03-20T20:26:58Z",
+    "subject": "Initial plan",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "d4d2ff41491a2e5661d9b4880703f87434adf7d6",
+    "date": "2026-03-20T16:26:02-04:00",
+    "subject": "Merge pull request #30 from caboose-mcp/copilot/sub-pr-29",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "3a87d77a8c7fc95836f7f0ace356326f34b69a76",
+    "date": "2026-03-20T20:14:21Z",
+    "subject": "fix: address all PR review comments - ctx propagation, auth errors, Discord Bot scheme, testable jokes handler",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "fix"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "a437dee1bdc8b75a7802c69fba5e0184e5de961a",
+    "date": "2026-03-20T20:07:24Z",
+    "subject": "Initial plan",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "6214058ea0523ffd4d49d6e1e1fc1d09e0489879",
+    "date": "2026-03-20T15:38:11-04:00",
+    "subject": "Merge main: keep consolidated chuck_norris_joke in jokes.go",
+    "author": "Chris Marasco",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "a23a153a25749a8c6e5851b1397ad71b45cf086f",
+    "date": "2026-03-20T15:32:21-04:00",
+    "subject": "Merge Chuck Norris joke integration (PR #27)",
+    "author": "Chris Marasco",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "44e66e9f95ece32be75a8949ca181b804ce81d0f",
+    "date": "2026-03-20T15:32:18-04:00",
+    "subject": "Merge OAuth providers feature (PR #26)",
+    "author": "Chris Marasco",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "6cc9c51f2b05d822d72151dc5e3feae4f0871583",
+    "date": "2026-03-20T14:55:14-04:00",
+    "subject": "Merge pull request #28 from caboose-mcp/copilot/sub-pr-27",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "08ef67ebd2d2d0cf10e81617a9e51529c965c6a2",
+    "date": "2026-03-20T18:33:33Z",
+    "subject": "fix: address all review comments from PR #27",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "fix"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "463b21ceebdc55df8801224d1031f1bb62e8de60",
+    "date": "2026-03-20T18:28:20Z",
+    "subject": "Initial plan",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "65f62edee28435141714dd905d921e85588b1d89",
+    "date": "2026-03-20T14:23:38-04:00",
+    "subject": "Merge pull request #21 from caboose-mcp/feat/dynamic-tool-count",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "1c5159e36c22f083f9b3137d6df529c52e7dbcb0",
+    "date": "2026-03-20T14:21:52-04:00",
+    "subject": "Merge pull request #24 from caboose-mcp/copilot/sub-pr-22-again",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "b104fc0cd92bee3dc9455f948b60387f971e9bb9",
+    "date": "2026-03-20T14:21:28-04:00",
+    "subject": "chore: resolve merge conflict in PR 24 - merge categories improvements with timeout client",
+    "author": "Chris Marasco",
+    "tags": [
+      "chore"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "0903afd8692210207928b6c8179dfce525333098",
+    "date": "2026-03-20T14:20:43-04:00",
+    "subject": "Merge pull request #22 from caboose-mcp/feat/chuck-norris-joke",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "e55499bad1705b707325a3caf823bc68f40ec2e1",
+    "date": "2026-03-20T14:17:22-04:00",
+    "subject": "feat: integrate chuck_norris_joke into jokes.go and update documentation",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "3e1d6e370a24d8df48e9116fe860dc0a3e99f82e",
+    "date": "2026-03-20T14:17:16-04:00",
+    "subject": "fix: use context-aware HTTP client with timeout in chuck_norris_joke handler (#23)",
+    "author": "Copilot",
+    "tags": [
+      "fix"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "74db1b9f76af144990e763a1d20eb7cbb8307529",
+    "date": "2026-03-20T18:07:19Z",
+    "subject": "Display all categories joined by comma instead of just the first one",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "89a8a2d16cdd4989fa1cf11d476f44a3d93ea521",
+    "date": "2026-03-20T18:06:46Z",
+    "subject": "Fix ChuckNorrisJoke struct to use Categories []string instead of Category string",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "988b49f1c898e3a7b516aa0b2edc6eea759a24c8",
+    "date": "2026-03-20T18:05:04Z",
+    "subject": "Initial plan",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "27146a0a3f510f75f82bac4a15cffc39403a7d4c",
+    "date": "2026-03-20T14:04:50-04:00",
+    "subject": "Update packages/server/tools/chuck_norris_joke.go",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "2bd5eab8d0305995b87c0faefbe9f44011dcdd75",
+    "date": "2026-03-20T14:03:30-04:00",
+    "subject": "feat: Magic-link JWT auth with OAuth providers for Google Calendar, Discord, and Slack",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "650bc900843009ae104c0f306ee4299515ee2a11",
+    "date": "2026-03-20T13:24:26-04:00",
+    "subject": "feat: add Chuck Norris joke tool",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "f282fc54669c270834d5aa6096a4d34d2fc00476",
+    "date": "2026-03-20T12:41:41-04:00",
+    "subject": "feat: add /api/stats endpoint for live tool count",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "f44ee17bd6751b9ea1d1458ec3e21617055becba",
+    "date": "2026-03-20T12:02:24-04:00",
+    "subject": "docs: update tool count to 117, add Auth and Agency sections (#20)",
+    "author": "Chris",
+    "tags": [
+      "docs"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "6d8468bc38dd686eb096e79df84b93f148f81a7b",
+    "date": "2026-03-19T15:52:54-04:00",
+    "subject": "docs: remove MCP_AUTH_TOKEN from hosted setup, clarify optional for self-hosted (#19)",
+    "author": "Copilot",
+    "tags": [
+      "docs"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "7dc5fd583675b05c0a5669194c2b5314d3fefd50",
+    "date": "2026-03-19T15:38:02-04:00",
+    "subject": "docs: remove bearer auth, add claude mcp add CLI instructions (#18)",
+    "author": "Chris",
+    "tags": [
+      "docs"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "f7ae0a97f57d5d693f81896664e0d88b4d7a2df9",
+    "date": "2026-03-19T14:54:45-04:00",
+    "subject": "fix: ALB health check path /mcp \u2192 /health (open auth broke /mcp health check)",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
+    "hash": "2f9aa66efbb1d6e3c3ed2e105ca85e7cf7e5f8cd",
+    "date": "2026-03-19T14:39:32-04:00",
+    "subject": "chore: remove MCP_AUTH_TOKEN from ECS task definition and Terraform",
+    "author": "Chris Marasco",
+    "tags": [
+      "chore"
+    ],
+    "repo": "caboose-mcp"
+  },
+  {
     "hash": "8320b880140079c17ad9e0512c3806450967cf1c",
     "date": "2026-03-19T14:00:43-04:00",
     "subject": "fix: auth only required when MCP_AUTH_TOKEN is set (#16)",
@@ -126,266 +496,6 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "aa58a0cb01591f2d3b021564c740f49470d66103",
-    "date": "2026-03-18T23:58:17-04:00",
-    "subject": "Merge pull request #7 from caboose-mcp/feat/tool-tiers",
-    "author": "Chris",
-    "tags": [
-      "other"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "57c55dee478f3d77b0bc52336a0fa34b47324295",
-    "date": "2026-03-18T23:58:08-04:00",
-    "subject": "feat: tool tiers, release workflow, setup guide, updated docs",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "4f6a33fcd623d6afbcf0c537bd27eea1d1432c85",
-    "date": "2026-03-18T23:51:39-04:00",
-    "subject": "feat: split tools into hosted/local/combined tiers",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "42d3d05091a9b153a03f100ecb45f89a4e79df31",
-    "date": "2026-03-18T23:42:43-04:00",
-    "subject": "Merge pull request #6 from caboose-mcp/feat/bots-flag",
-    "author": "Chris",
-    "tags": [
-      "other"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "14b83d3005427e7695c68486f8abc31b328bd07f",
-    "date": "2026-03-18T23:42:39-04:00",
-    "subject": "merge: resolve conflicts keeping feat/bots-flag changes",
-    "author": "Chris Marasco",
-    "tags": [
-      "other"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "da61b69960c2ce4ed2af16299d32ed14999a0a35",
-    "date": "2026-03-18T23:42:09-04:00",
-    "subject": "feat: complete Bruno collection \u2014 120 requests across 24 categories",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "20cdd19bff11cf0b37f7c4953bb5f7340c92b72f",
-    "date": "2026-03-18T23:13:16-04:00",
-    "subject": "fix: accept 401 in ALB health check matcher for authenticated /mcp endpoint",
-    "author": "Chris Marasco",
-    "tags": [
-      "fix"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "30b5604c6d242062a28025839b1182fddb23afa7",
-    "date": "2026-03-18T22:13:59-04:00",
-    "subject": "feat: add Bruno collection for MCP HTTP endpoint testing",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "dd212008f149e769c9a6256e2fefc52b42b36e3d",
-    "date": "2026-03-18T22:10:25-04:00",
-    "subject": "feat: secrets sync, bot session memory, terraform access key fix",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "9ee8eca97e03c573405c90cf1257e17113322808",
-    "date": "2026-03-18T08:00:06-04:00",
-    "subject": "feat: Slack Socket Mode bot + --bots flag for concurrent bots (#1)",
-    "author": "Chris",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "4f701e96ccc562aea3d5a79e81711f87d5bf872c",
-    "date": "2026-03-18T07:59:24-04:00",
-    "subject": "fix: resolve all duplicate symbol and type mismatch errors from copilot merge",
-    "author": "Chris Marasco",
-    "tags": [
-      "fix"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "a7ca3b9fee8d18e05a2738b51b590cdc6d7ad883",
-    "date": "2026-03-18T07:53:00-04:00",
-    "subject": "Apply suggestions from code review",
-    "author": "Chris",
-    "tags": [
-      "other"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "7ccc03aec95e19bb753b1b5bf8283440ff9306f4",
-    "date": "2026-03-18T07:46:20-04:00",
-    "subject": "Initial plan (#5)",
-    "author": "Copilot",
-    "tags": [
-      "other"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "f00f14025c7bdc55e65fc4f5f10a4a463dc901cf",
-    "date": "2026-03-18T07:43:26-04:00",
-    "subject": "Merge pull request #4 from caboose-mcp/copilot/sub-pr-1-again",
-    "author": "Copilot",
-    "tags": [
-      "other"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "bd34377ddc1dfde98bf1916a3b774c2f994199bc",
-    "date": "2026-03-18T07:37:48-04:00",
-    "subject": "Merge pull request #3 from caboose-mcp/feat/aws-ecs",
-    "author": "Chris",
-    "tags": [
-      "other"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "8318332228d31862ce76cf54544ae536c1e64f5c",
-    "date": "2026-03-18T07:37:21-04:00",
-    "subject": "feat: GitHub Actions deploy workflows and resolve merge conflicts",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "630a7f0900b36dfd6fcfcfdc123d8ce27cc9e373",
-    "date": "2026-03-18T07:29:45-04:00",
-    "subject": "Merge branch 'feat/aws-ecs' into feat/bots-flag",
-    "author": "Chris Marasco",
-    "tags": [
-      "other"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "facdfadd924b0c3e89f5119caf2df0d0636c6862",
-    "date": "2026-03-18T07:28:40-04:00",
-    "subject": "feat: ECS Fargate hosting with ALB, HTTPS, ACM cert for mcp.chrismarasco.io",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "2300e06e2f458c830a8d58653905a8ffc4c4fb15",
-    "date": "2026-03-18T11:25:18Z",
-    "subject": "fix: address all PR review comments - add missing symbols, restore DiscordWebhookURL, fix go.mod",
-    "author": "copilot-swe-agent[bot]",
-    "tags": [
-      "fix"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "a5e18c446ce98d9ecef1164c13e791c7c58e32c3",
-    "date": "2026-03-18T07:24:13-04:00",
-    "subject": "fix: add missing bot agent files and DiscordWebhookURL config field",
-    "author": "Chris Marasco",
-    "tags": [
-      "fix"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "0b3e39411dfd6b4f402f4a3bcefb8e5a695cbf8e",
-    "date": "2026-03-18T11:17:08Z",
-    "subject": "Initial plan",
-    "author": "copilot-swe-agent[bot]",
-    "tags": [
-      "other"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "70fd511183225358d657b30ab0b8eee839d381ef",
-    "date": "2026-03-18T07:08:09-04:00",
-    "subject": "feat: Slack Socket Mode bot with ChatProvider integration",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "c52e18519087107eaf0b84ce0b23ad2533ad1a03",
-    "date": "2026-03-18T07:06:19-04:00",
-    "subject": "feat: add --bots flag to run Slack and Discord bots concurrently",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "9b3245f3e4aed7253ae45a1e7c4b4f50f98fea38",
-    "date": "2026-03-18T05:49:45-04:00",
-    "subject": "fix: docker compose build context paths and pull_policy",
-    "author": "Chris Marasco",
-    "tags": [
-      "fix"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "29e3ddd85eb0bb60f4f23cb70f99417bd3180e8e",
-    "date": "2026-03-18T05:45:06-04:00",
-    "subject": "feat: env_check/env_fix tools, discord webhook, n8n discord notify, ci fix",
-    "author": "Chris Marasco",
-    "tags": [
-      "feat"
-    ],
-    "repo": "caboose-mcp"
-  },
-  {
-    "hash": "a72a48d5fd1c68dab3a9112cfdff3a57e2edeb52",
-    "date": "2026-03-18T05:00:24-04:00",
-    "subject": "chore: init caboose-mcp monorepo",
-    "author": "Chris Marasco",
-    "tags": [
-      "chore"
     ],
     "repo": "caboose-mcp"
   }
