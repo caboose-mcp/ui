@@ -67,10 +67,11 @@ export default function Architecture() {
               className="w-full h-screen"
               title="Caboose MCP Architecture Overview"
               allowFullScreen
-              sandbox="allow-same-origin allow-scripts allow-popups allow-presentation allow-forms"
-              referrerPolicy="no-referrer"
+              sandbox="allow-same-origin allow-scripts allow-popups allow-presentation allow-forms allow-top-navigation-by-user-activation"
+              referrerPolicy="strict-origin-when-cross-origin"
               loading="lazy"
               onLoad={() => setIsLoaded(true)}
+              onError={() => setIsLoaded(true)}
             />
           </div>
 
