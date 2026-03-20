@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { ThemeProvider } from './contexts/ThemeContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ExperimentalBanner from './components/ExperimentalBanner'
@@ -22,24 +23,26 @@ export default function App() {
   }, [])
 
   return (
-    <BrowserRouter basename="/">
-      <div className="min-h-screen flex flex-col">
-        {experimental && <ExperimentalBanner />}
-        <Navbar />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tools" element={<Tools />} />
-            <Route path="/tools/:name" element={<ToolDetail />} />
-            <Route path="/sandbox" element={<Sandbox />} />
-            <Route path="/auth" element={<AuthPortal />} />
-            <Route path="/changelog" element={<Changelog />} />
-            <Route path="/architecture" element={<Architecture />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter basename="/">
+        <div className="min-h-screen flex flex-col">
+          {experimental && <ExperimentalBanner />}
+          <Navbar />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/tools" element={<Tools />} />
+              <Route path="/tools/:name" element={<ToolDetail />} />
+              <Route path="/sandbox" element={<Sandbox />} />
+              <Route path="/auth" element={<AuthPortal />} />
+              <Route path="/changelog" element={<Changelog />} />
+              <Route path="/architecture" element={<Architecture />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }

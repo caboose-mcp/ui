@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { BookOpen, FlaskConical, KeyRound, Clock, Menu, X, Layers } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 
 const NAV = [
   { to: '/tools', label: 'Tools', icon: BookOpen },
@@ -49,8 +50,10 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right: endpoint pill + hamburger */}
+          {/* Right: theme toggle + endpoint pill + hamburger */}
           <div className="flex items-center gap-3">
+            <ThemeToggle />
+
             <a
               href="https://mcp.chrismarasco.io/mcp"
               target="_blank"
