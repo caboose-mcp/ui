@@ -6,7 +6,8 @@
     "author": "Chris",
     "tags": [
       "fix"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "a6dcf2e578a802fadabb0cf6d0b924567135edbf",
@@ -15,7 +16,8 @@
     "author": "Chris",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "1540c06c09485f36c0fa4e316846e55ecc1ed197",
@@ -24,7 +26,8 @@
     "author": "Chris",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "eb7294e2a3cb077d7a4411a7deb6e9fcd1ec09f7",
@@ -33,7 +36,8 @@
     "author": "Chris",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "00a672b2c4e38b034e3587fd590a86fbf4c20990",
@@ -42,7 +46,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "1e059545fa2ff50b5063d09fbaee228e7738d453",
@@ -51,7 +56,8 @@
     "author": "Chris Marasco",
     "tags": [
       "fix"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "fe2e4825044d97b16b7fae8739896c8ad8b1256e",
@@ -60,7 +66,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "16464a64d2f0fd39873bad2cf83f41c0d81b30cf",
@@ -69,7 +76,8 @@
     "author": "Chris",
     "tags": [
       "chore"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "8adba742fb350beb1fe83a32f2028bbb4426a7ac",
@@ -78,7 +86,8 @@
     "author": "Chris",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "33ca21a6699a5b8aaf232ae06984f664a47a431b",
@@ -87,7 +96,8 @@
     "author": "Chris Marasco",
     "tags": [
       "fix"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "1296e6e10e54495648d707b0718b67771082e769",
@@ -96,7 +106,8 @@
     "author": "Chris",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "4c6ad6a88c6f4e3c9e49e49f16fe8081cfd2629e",
@@ -105,7 +116,8 @@
     "author": "Chris",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "7948073c827f3dab71e95befa8e9c00e72a840cd",
@@ -114,7 +126,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "aa58a0cb01591f2d3b021564c740f49470d66103",
@@ -123,7 +136,8 @@
     "author": "Chris",
     "tags": [
       "other"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "57c55dee478f3d77b0bc52336a0fa34b47324295",
@@ -132,7 +146,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "4f6a33fcd623d6afbcf0c537bd27eea1d1432c85",
@@ -141,7 +156,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "42d3d05091a9b153a03f100ecb45f89a4e79df31",
@@ -150,7 +166,8 @@
     "author": "Chris",
     "tags": [
       "other"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "14b83d3005427e7695c68486f8abc31b328bd07f",
@@ -159,7 +176,8 @@
     "author": "Chris Marasco",
     "tags": [
       "other"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "da61b69960c2ce4ed2af16299d32ed14999a0a35",
@@ -168,7 +186,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "20cdd19bff11cf0b37f7c4953bb5f7340c92b72f",
@@ -177,7 +196,8 @@
     "author": "Chris Marasco",
     "tags": [
       "fix"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "30b5604c6d242062a28025839b1182fddb23afa7",
@@ -186,7 +206,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "dd212008f149e769c9a6256e2fefc52b42b36e3d",
@@ -195,7 +216,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "9ee8eca97e03c573405c90cf1257e17113322808",
@@ -204,7 +226,8 @@
     "author": "Chris",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "4f701e96ccc562aea3d5a79e81711f87d5bf872c",
@@ -213,7 +236,8 @@
     "author": "Chris Marasco",
     "tags": [
       "fix"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "a7ca3b9fee8d18e05a2738b51b590cdc6d7ad883",
@@ -222,7 +246,8 @@
     "author": "Chris",
     "tags": [
       "other"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "7ccc03aec95e19bb753b1b5bf8283440ff9306f4",
@@ -231,7 +256,8 @@
     "author": "Copilot",
     "tags": [
       "other"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "f00f14025c7bdc55e65fc4f5f10a4a463dc901cf",
@@ -240,7 +266,8 @@
     "author": "Copilot",
     "tags": [
       "other"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "bd34377ddc1dfde98bf1916a3b774c2f994199bc",
@@ -249,7 +276,8 @@
     "author": "Chris",
     "tags": [
       "other"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "8318332228d31862ce76cf54544ae536c1e64f5c",
@@ -258,7 +286,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "630a7f0900b36dfd6fcfcfdc123d8ce27cc9e373",
@@ -267,7 +296,8 @@
     "author": "Chris Marasco",
     "tags": [
       "other"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "facdfadd924b0c3e89f5119caf2df0d0636c6862",
@@ -276,7 +306,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "2300e06e2f458c830a8d58653905a8ffc4c4fb15",
@@ -285,7 +316,8 @@
     "author": "copilot-swe-agent[bot]",
     "tags": [
       "fix"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "a5e18c446ce98d9ecef1164c13e791c7c58e32c3",
@@ -294,7 +326,8 @@
     "author": "Chris Marasco",
     "tags": [
       "fix"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "0b3e39411dfd6b4f402f4a3bcefb8e5a695cbf8e",
@@ -303,7 +336,8 @@
     "author": "copilot-swe-agent[bot]",
     "tags": [
       "other"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "70fd511183225358d657b30ab0b8eee839d381ef",
@@ -312,7 +346,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "c52e18519087107eaf0b84ce0b23ad2533ad1a03",
@@ -321,7 +356,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "9b3245f3e4aed7253ae45a1e7c4b4f50f98fea38",
@@ -330,7 +366,8 @@
     "author": "Chris Marasco",
     "tags": [
       "fix"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "29e3ddd85eb0bb60f4f23cb70f99417bd3180e8e",
@@ -339,7 +376,8 @@
     "author": "Chris Marasco",
     "tags": [
       "feat"
-    ]
+    ],
+    "repo": "caboose-mcp"
   },
   {
     "hash": "a72a48d5fd1c68dab3a9112cfdff3a57e2edeb52",
@@ -348,6 +386,7 @@
     "author": "Chris Marasco",
     "tags": [
       "chore"
-    ]
+    ],
+    "repo": "caboose-mcp"
   }
 ]

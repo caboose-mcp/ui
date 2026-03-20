@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react'
 import { Clock, GitCommit, ExternalLink, Search, ChevronDown } from 'lucide-react'
-import changelogJson from '../data/changelog.json'
+import cabooseMcpLog from '../data/changelog.json'
+import uiLog from '../data/changelog-ui.json'
+import memlLog from '../data/changelog-meml.json'
 
 export type ChangelogEntry = {
   hash: string
@@ -8,11 +10,27 @@ export type ChangelogEntry = {
   subject: string
   author: string
   tags: string[]
+  repo: 'caboose-mcp' | 'ui' | 'meml'
 }
 
 const ALL_TAGS = ['feat', 'fix', 'docs', 'ci', 'chore', 'refactor', 'style', 'test', 'perf', 'other']
 const LIMITS = [10, 25, 50, 100, 0] // 0 = all
-const changelogData = changelogJson as ChangelogEntry[]
+
+const REPO_STYLES: Record<string, string> = {
+  'caboose-mcp': 'text-accent-green bg-accent-green/10 border-accent-green/20',
+  'ui':          'text-accent-blue bg-accent-blue/10 border-accent-blue/20',
+  'meml':        'text-accent-purple bg-accent-purple/10 border-accent-purple/20',
+}
+
+const REPO_URLS: Record<string, string> = {
+  'caboose-mcp': 'https://github.com/caboose-mcp/caboose-mcp',
+  'ui':          'https://github.com/caboose-mcp/ui',
+  'meml':        'https://github.com/caboose-mcp/meml',
+}
+
+const changelogData = ([...cabooseMcpLog, ...uiLog, ...memlLog] as ChangelogEntry[]).sort((a, b) =>
+  new Date(b.date).getTime() - new Date(a.date).getTime()
+)
 
 const TAG_STYLES: Record<string, string> = {
   feat:     'text-accent-green bg-accent-green/10 border-accent-green/20',
@@ -30,11 +48,16 @@ const DOT_STYLES: Record<string, string> = {
 export default function Changelog() {
   const [search, setSearch] = useState('')
   const [activeTag, setActiveTag] = useState<string | null>(null)
+  const [activeRepo, setActiveRepo] = useState<string | null>(null)
   const [sortAsc, setSortAsc] = useState(false)
   const [limit, setLimit] = useState(10)
 
   const filtered = useMemo(() => {
     let entries = [...changelogData]
+
+    if (activeRepo) {
+      entries = entries.filter(e => e.repo === activeRepo)
+    }
 
     if (activeTag) {
       entries = entries.filter(e => e.tags.includes(activeTag))
@@ -55,7 +78,7 @@ export default function Changelog() {
     })
 
     return limit > 0 ? entries.slice(0, limit) : entries
-  }, [search, activeTag, sortAsc, limit])
+  }, [search, activeTag, activeRepo, sortAsc, limit])
 
   const tagCounts = useMemo(() => {
     const counts: Record<string, number> = {}
@@ -63,6 +86,14 @@ export default function Changelog() {
       for (const t of e.tags) {
         counts[t] = (counts[t] ?? 0) + 1
       }
+    }
+    return counts
+  }, [])
+
+  const repoCounts = useMemo(() => {
+    const counts: Record<string, number> = {}
+    for (const e of changelogData) {
+      counts[e.repo] = (counts[e.repo] ?? 0) + 1
     }
     return counts
   }, [])
@@ -119,6 +150,37 @@ export default function Changelog() {
         </select>
       </div>
 
+      {/* Repo filters */}
+      <div className="flex flex-wrap gap-1.5 mb-6 pb-4 border-b border-border">
+        <button
+          onClick={() => setActiveRepo(null)}
+          className={`tag text-xs border transition-colors ${
+            activeRepo === null
+              ? 'text-accent-green bg-accent-green/10 border-accent-green/20'
+              : 'text-text-muted bg-bg border-border hover:border-border-bright'
+          }`}
+        >
+          all repos
+        </button>
+        {['caboose-mcp', 'ui', 'meml'].map(repo => {
+          const count = repoCounts[repo]
+          if (count === 0) return null
+          return (
+            <button
+              key={repo}
+              onClick={() => setActiveRepo(activeRepo === repo ? null : repo)}
+              className={`tag text-xs border transition-colors ${
+                activeRepo === repo
+                  ? REPO_STYLES[repo]
+                  : 'text-text-muted bg-bg border-border hover:border-border-bright'
+              }`}
+            >
+              {repo} ({count})
+            </button>
+          )
+        })}
+      </div>
+
       {/* Tag filters */}
       <div className="flex flex-wrap gap-1.5 mb-6">
         <button
@@ -170,13 +232,16 @@ export default function Changelog() {
 
                 <div className="group">
                   <div className="flex flex-wrap items-start gap-2 mb-1">
+                    <span className={`tag text-[10px] border font-medium ${REPO_STYLES[entry.repo]}`}>
+                      {entry.repo}
+                    </span>
                     {entry.tags.map(tag => (
                       <span key={tag} className={`tag text-[10px] border ${TAG_STYLES[tag] ?? TAG_STYLES.other}`}>
                         {tag}
                       </span>
                     ))}
                     <a
-                      href={`https://github.com/caboose-mcp/caboose-mcp/commit/${entry.hash}`}
+                      href={`${REPO_URLS[entry.repo]}/commit/${entry.hash}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 text-xs text-text-muted hover:text-text-secondary
