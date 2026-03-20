@@ -15,14 +15,14 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur-sm">
+    <nav aria-label="Main navigation" className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-accent-green/50 rounded px-1">
             <img
               src="/logo.png"
-              alt="caboose-mcp"
+              alt="caboose-mcp home"
               className="w-7 h-7 rounded-md object-cover"
             />
             <span className="font-mono font-medium text-text-primary text-sm">
@@ -37,7 +37,8 @@ export default function Navbar() {
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition-all duration-150 ${
+                  `flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition-all duration-150
+                   focus:outline-none focus:ring-2 focus:ring-accent-green/50 ${
                     isActive
                       ? 'text-accent-green bg-accent-green/10'
                       : 'text-text-secondary hover:text-text-primary hover:bg-bg-hover'
@@ -60,16 +61,21 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full
                          bg-accent-green/10 border border-accent-green/20 text-accent-green
-                         text-xs font-mono hover:bg-accent-green/15 transition-colors"
+                         text-xs font-mono hover:bg-accent-green/15 transition-colors
+                         focus:outline-none focus:ring-2 focus:ring-accent-green/50"
+              aria-label="Live endpoint (opens in new window)"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse-slow" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse-slow" aria-hidden="true" />
               live endpoint
             </a>
 
             <button
-              className="sm:hidden p-1.5 rounded-md text-text-secondary hover:text-text-primary"
+              className="sm:hidden p-1.5 rounded-md text-text-secondary hover:text-text-primary
+                         focus:outline-none focus:ring-2 focus:ring-accent-green/50"
               onClick={() => setOpen(!open)}
-              aria-label="Toggle menu"
+              aria-label="Toggle navigation menu"
+              aria-expanded={open}
+              aria-controls="mobile-menu"
             >
               {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -79,14 +85,15 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="sm:hidden border-t border-border bg-bg-secondary animate-fade-in">
+        <div id="mobile-menu" className="sm:hidden border-t border-border bg-bg-secondary animate-fade-in">
           {NAV.map(({ to, label, icon: Icon }) => (
             <NavLink
               key={to}
               to={to}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-2 px-4 py-3 text-sm border-b border-border/50 ${
+                `flex items-center gap-2 px-4 py-3 text-sm border-b border-border/50
+                 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent-green/50 ${
                   isActive ? 'text-accent-green' : 'text-text-secondary'
                 }`
               }

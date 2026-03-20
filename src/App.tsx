@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
+import SkipToMain from './components/SkipToMain'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ExperimentalBanner from './components/ExperimentalBanner'
@@ -25,10 +26,11 @@ export default function App() {
   return (
     <ThemeProvider>
       <BrowserRouter basename="/">
+        <SkipToMain />
         <div className="min-h-screen flex flex-col">
           {experimental && <ExperimentalBanner />}
           <Navbar />
-          <main className="flex-1">
+          <main id="main-content" className="flex-1">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/tools" element={<Tools />} />
