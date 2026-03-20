@@ -8,9 +8,15 @@ const GAMMA_URLS = {
 
 export default function Architecture() {
   const [useAlternative, setUseAlternative] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const currentUrl = useAlternative ? GAMMA_URLS.alternative : GAMMA_URLS.primary
   const embedUrl = currentUrl.replace('/docs/', '/embed/docs/')
+
+  const handleToggle = () => {
+    setIsLoaded(false)
+    setUseAlternative(!useAlternative)
+  }
 
   return (
     <div className="min-h-screen bg-bg animate-fade-in">
@@ -25,7 +31,7 @@ export default function Architecture() {
           {/* URL Toggle for Fallback */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setUseAlternative(!useAlternative)}
+              onClick={handleToggle}
               className={`px-3 py-1.5 rounded-md text-sm transition-all duration-150
                           focus:outline-none focus:ring-2 focus:ring-accent-green/50 ${
                 useAlternative
@@ -47,12 +53,14 @@ export default function Architecture() {
         {/* Embedded Gamma Slideshow */}
         <div className="rounded-lg overflow-hidden border border-border bg-bg-secondary shadow-lg">
           <div className="relative w-full bg-black/20">
-            {/* Fallback message for slower loads */}
-            <div className="absolute inset-0 flex items-center justify-center bg-bg-secondary z-10 pointer-events-none">
-              <div className="text-center">
-                <p className="text-text-muted text-sm mb-2">Loading architecture overview...</p>
+            {/* Loading overlay — hidden once iframe fires onLoad */}
+            {!isLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center bg-bg-secondary z-10 pointer-events-none">
+                <div className="text-center">
+                  <p className="text-text-muted text-sm mb-2">Loading architecture overview...</p>
+                </div>
               </div>
-            </div>
+            )}
 
             <iframe
               src={embedUrl}
@@ -62,12 +70,7 @@ export default function Architecture() {
               sandbox="allow-same-origin allow-scripts allow-popups allow-presentation allow-forms"
               referrerPolicy="no-referrer"
               loading="lazy"
-              onLoad={(e) => {
-                const iframe = e.currentTarget
-                if (iframe.parentElement?.querySelector('[role="presentation"]')) {
-                  iframe.parentElement.querySelector('[role="presentation"]')?.remove()
-                }
-              }}
+              onLoad={() => setIsLoaded(true)}
             />
           </div>
 
