@@ -20,6 +20,10 @@
           const html = document.documentElement
           html.classList.remove('light', 'dark')
           html.classList.add(isDark ? 'dark' : 'light')
+          const metaTheme = document.querySelector('meta[name="theme-color"]')
+          if (metaTheme) {
+            metaTheme.setAttribute('content', isDark ? '#0c0c14' : '#f5f5f5')
+          }
         } catch {}
       })()
     </script>

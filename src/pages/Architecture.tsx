@@ -17,6 +17,8 @@ export default function Architecture() {
             title="Caboose MCP Architecture Overview"
             allowFullScreen
             frameBorder="0"
+            sandbox="allow-same-origin allow-scripts allow-presentation"
+            referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>
       </div>

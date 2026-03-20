@@ -17,11 +17,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   // Load theme from localStorage on mount
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') as Theme | null
-    if (storedTheme && ['light', 'dark', 'system'].includes(storedTheme)) {
-      setThemeState(storedTheme)
+    try {
+      const storedTheme = localStorage.getItem('theme') as Theme | null
+      if (storedTheme && ['light', 'dark', 'system'].includes(storedTheme)) {
+        setThemeState(storedTheme)
+      }
+    } catch {
+      // If accessing localStorage fails, fall back to the default theme ('system')
+    } finally {
+      setMounted(true)
     }
-    setMounted(true)
   }, [])
 
   // Update resolved theme based on system preference and user selection
@@ -35,23 +40,22 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       return theme
     }
 
-    const resolved = getResolvedTheme()
-    setResolvedTheme(resolved)
+    const applyTheme = (resolved: 'light' | 'dark') => {
+      // Update HTML class
+      const html = document.documentElement
+      html.classList.remove('light', 'dark')
+      html.classList.add(resolved)
 
-    // Update HTML class and other meta tags
-    const html = document.documentElement
-    html.classList.remove('light', 'dark')
-    html.classList.add(resolved)
-
-    // Update theme-color meta tag
-    const themeColorMeta = document.querySelector('meta[name="theme-color"]')
-    if (themeColorMeta) {
-      if (resolved === 'dark') {
-        themeColorMeta.setAttribute('content', '#0c0c14')
-      } else {
-        themeColorMeta.setAttribute('content', '#f5f5f5')
+      // Update theme-color meta tag
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]')
+      if (themeColorMeta) {
+        themeColorMeta.setAttribute('content', resolved === 'dark' ? '#0c0c14' : '#f5f5f5')
       }
     }
+
+    const resolved = getResolvedTheme()
+    setResolvedTheme(resolved)
+    applyTheme(resolved)
 
     // Listen for system theme changes if using system theme
     if (theme === 'system') {
@@ -59,9 +63,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       const handleChange = () => {
         const newResolved = mediaQuery.matches ? 'dark' : 'light'
         setResolvedTheme(newResolved)
-        const html = document.documentElement
-        html.classList.remove('light', 'dark')
-        html.classList.add(newResolved)
+        applyTheme(newResolved)
       }
 
       mediaQuery.addEventListener('change', handleChange)
@@ -71,12 +73,17 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme)
-    localStorage.setItem('theme', newTheme)
+    try {
+      localStorage.setItem('theme', newTheme)
+    } catch (error) {
+      // Log and ignore storage errors so UI continues to function even if persistence fails
+      console.error('Failed to persist theme to localStorage:', error)
+    }
   }
 
   // Don't render children until hydration is complete to avoid flashing
   if (!mounted) {
-    return <>{children}</>
+    return null
   }
 
   return (

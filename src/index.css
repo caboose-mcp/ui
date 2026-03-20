@@ -5,7 +5,7 @@
 @layer base {
   /* Dark theme (default) */
   html {
-    scroll-behavior: smooth;
+    @apply scroll-smooth;
     --bg: 222 22% 6%;
     --bg-secondary: 220 16% 12%;
     --bg-card: 220 15% 16%;
@@ -19,7 +19,6 @@
     --text-code: 200 100% 82%;
   }
 
-  /* Light theme */
   html.light {
     --bg: 0 0% 97%;
     --bg-secondary: 0 0% 92%;
@@ -32,10 +31,6 @@
     --text-secondary: 0 0% 40%;
     --text-muted: 0 0% 60%;
     --text-code: 200 50% 40%;
-  }
-
-  html {
-    @apply scroll-smooth;
   }
 
   body {
