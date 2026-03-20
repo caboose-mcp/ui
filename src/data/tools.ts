@@ -1263,7 +1263,7 @@ export const TOOLS: ToolDef[] = [
   {
     name: 'chuck_norris_joke',
     category: 'misc',
-    tier: 'hosted',
+    tier: 'both',
     tags: ['fun', 'api', 'read-only'],
     highlighted: true,
     description: 'Fetch a random Chuck Norris joke from the chuck norris API. Optionally filter by category.',
