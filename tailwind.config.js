@@ -1,19 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         bg: {
-          DEFAULT: '#0c0c14',
-          secondary: '#13131e',
-          card: '#16162a',
-          hover: '#1c1c30',
+          DEFAULT: 'hsl(var(--bg) / <alpha-value>)',
+          secondary: 'hsl(var(--bg-secondary) / <alpha-value>)',
+          card: 'hsl(var(--bg-card) / <alpha-value>)',
+          hover: 'hsl(var(--bg-hover) / <alpha-value>)',
         },
         border: {
-          DEFAULT: '#242438',
-          bright: '#32325a',
-          glow: '#4f4f8f',
+          DEFAULT: 'hsl(var(--border) / <alpha-value>)',
+          bright: 'hsl(var(--border-bright) / <alpha-value>)',
+          glow: 'hsl(var(--border-glow) / <alpha-value>)',
         },
         accent: {
           green: '#22c55e',
@@ -26,10 +27,10 @@ export default {
           cyan: '#06b6d4',
         },
         text: {
-          primary: '#e2e8f0',
-          secondary: '#94a3b8',
-          muted: '#475569',
-          code: '#a5f3fc',
+          primary: 'hsl(var(--text-primary) / <alpha-value>)',
+          secondary: 'hsl(var(--text-secondary) / <alpha-value>)',
+          muted: 'hsl(var(--text-muted) / <alpha-value>)',
+          code: 'hsl(var(--text-code) / <alpha-value>)',
         },
       },
       fontFamily: {

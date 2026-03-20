@@ -3,8 +3,34 @@
 @tailwind utilities;
 
 @layer base {
+  /* Dark theme (default) */
   html {
-    scroll-behavior: smooth;
+    @apply scroll-smooth;
+    --bg: 222 22% 6%;
+    --bg-secondary: 220 16% 12%;
+    --bg-card: 220 15% 16%;
+    --bg-hover: 220 13% 18%;
+    --border: 220 13% 14%;
+    --border-bright: 220 10% 35%;
+    --border-glow: 220 8% 56%;
+    --text-primary: 215 14% 88%;
+    --text-secondary: 215 15% 64%;
+    --text-muted: 215 12% 28%;
+    --text-code: 200 100% 82%;
+  }
+
+  html.light {
+    --bg: 0 0% 97%;
+    --bg-secondary: 0 0% 92%;
+    --bg-card: 0 0% 95%;
+    --bg-hover: 0 0% 90%;
+    --border: 0 0% 85%;
+    --border-bright: 0 0% 75%;
+    --border-glow: 0 0% 65%;
+    --text-primary: 0 0% 15%;
+    --text-secondary: 0 0% 40%;
+    --text-muted: 0 0% 60%;
+    --text-code: 200 50% 40%;
   }
 
   body {
