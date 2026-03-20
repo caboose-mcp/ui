@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ExternalLink, AlertCircle } from 'lucide-react'
 
 const GAMMA_URLS = {
@@ -6,21 +6,56 @@ const GAMMA_URLS = {
   alternative: 'https://gamma.app/docs/xwh277cvfvw4d2c',
 }
 
+// 12 s gives Gamma's CDN time to respond on slow connections while still
+// surfacing failures quickly enough to be useful.
+const EMBED_TIMEOUT_MS = 12000
+
 export default function Architecture() {
   const [useAlternative, setUseAlternative] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const [hasError, setHasError] = useState(false)
+  const loadTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const currentUrl = useAlternative ? GAMMA_URLS.alternative : GAMMA_URLS.primary
   const embedUrl = currentUrl.replace('/docs/', '/embed/docs/')
 
-  const handleToggle = () => {
+  // Start a timeout whenever embedUrl changes. If the iframe hasn't fired
+  // onLoad within the window, treat it as a failure. This catches cases where
+  // onError never fires (e.g., HTTP 404 or CSP/X-Frame-Options blocking).
+  // State resets happen here (after cleanup) to avoid races with the old timer.
+  useEffect(() => {
     setIsLoaded(false)
     setHasError(false)
+    loadTimerRef.current = setTimeout(() => {
+      setHasError(true)
+      setIsLoaded(true)
+    }, EMBED_TIMEOUT_MS)
+
+    return () => {
+      if (loadTimerRef.current !== null) {
+        clearTimeout(loadTimerRef.current)
+        loadTimerRef.current = null
+      }
+    }
+  }, [embedUrl])
+
+  const handleToggle = () => {
     setUseAlternative(prev => !prev)
   }
 
+  const handleIframeLoad = () => {
+    if (loadTimerRef.current !== null) {
+      clearTimeout(loadTimerRef.current)
+      loadTimerRef.current = null
+    }
+    setIsLoaded(true)
+  }
+
   const handleIframeError = () => {
+    if (loadTimerRef.current !== null) {
+      clearTimeout(loadTimerRef.current)
+      loadTimerRef.current = null
+    }
     setHasError(true)
     setIsLoaded(true)
   }
@@ -103,7 +138,7 @@ export default function Architecture() {
                 sandbox="allow-same-origin allow-scripts allow-popups allow-presentation allow-forms allow-top-navigation-by-user-activation"
                 referrerPolicy="strict-origin-when-cross-origin"
                 loading="lazy"
-                onLoad={() => setIsLoaded(true)}
+                onLoad={handleIframeLoad}
                 onError={handleIframeError}
               />
             </div>
