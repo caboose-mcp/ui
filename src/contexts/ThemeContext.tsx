@@ -10,50 +10,49 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('system')
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('dark')
-  const [mounted, setMounted] = useState(false)
+function getStoredTheme(): Theme {
+  try {
+    const storedTheme = localStorage.getItem('theme') as Theme | null
+    if (storedTheme && ['light', 'dark', 'system'].includes(storedTheme)) {
+      return storedTheme
+    }
+  } catch {
+    // Fall back to system default if storage is unavailable
+  }
+  return 'system'
+}
 
-  // Load theme from localStorage on mount
-  useEffect(() => {
+function resolveTheme(theme: Theme): 'light' | 'dark' {
+  if (theme === 'system') {
     try {
-      const storedTheme = localStorage.getItem('theme') as Theme | null
-      if (storedTheme && ['light', 'dark', 'system'].includes(storedTheme)) {
-        setThemeState(storedTheme)
-      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     } catch {
-      // If accessing localStorage fails, fall back to the default theme ('system')
-    } finally {
-      setMounted(true)
+      return 'dark'
     }
-  }, [])
+  }
+  return theme
+}
 
-  // Update resolved theme based on system preference and user selection
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  // Initialize synchronously from localStorage — safe because this app is client-side only (no SSR),
+  // so localStorage is always available before the first render.
+  const [theme, setThemeState] = useState<Theme>(getStoredTheme)
+  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>(() => resolveTheme(theme))
+
+  // Apply theme to DOM and listen for system preference changes
   useEffect(() => {
-    if (!mounted) return
-
-    const getResolvedTheme = (): 'light' | 'dark' => {
-      if (theme === 'system') {
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-      }
-      return theme
-    }
-
     const applyTheme = (resolved: 'light' | 'dark') => {
-      // Update HTML class
       const html = document.documentElement
       html.classList.remove('light', 'dark')
       html.classList.add(resolved)
 
-      // Update theme-color meta tag
       const themeColorMeta = document.querySelector('meta[name="theme-color"]')
       if (themeColorMeta) {
         themeColorMeta.setAttribute('content', resolved === 'dark' ? '#0c0c14' : '#f5f5f5')
       }
     }
 
-    const resolved = getResolvedTheme()
+    const resolved = resolveTheme(theme)
     setResolvedTheme(resolved)
     applyTheme(resolved)
 
@@ -69,7 +68,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       mediaQuery.addEventListener('change', handleChange)
       return () => mediaQuery.removeEventListener('change', handleChange)
     }
-  }, [theme, mounted])
+  }, [theme])
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme)
@@ -79,11 +78,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       // Log and ignore storage errors so UI continues to function even if persistence fails
       console.error('Failed to persist theme to localStorage:', error)
     }
-  }
-
-  // Don't render children until hydration is complete to avoid flashing
-  if (!mounted) {
-    return null
   }
 
   return (
