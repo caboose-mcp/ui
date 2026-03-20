@@ -39,6 +39,9 @@ export const CATEGORIES = [
   { id: 'toolsmith', label: 'Toolsmith', color: 'text-rose-400' },
   { id: 'sandbox', label: 'Sandbox', color: 'text-lime-400' },
   { id: 'audit', label: 'Audit', color: 'text-orange-300' },
+  { id: 'env', label: 'Environment', color: 'text-lime-300' },
+  { id: 'agency', label: 'Agency', color: 'text-fuchsia-400' },
+  { id: 'claude', label: 'Claude Files', color: 'text-amber-300' },
   { id: 'misc', label: 'Misc', color: 'text-slate-400' },
 ]
 
@@ -504,6 +507,19 @@ export const TOOLS: ToolDef[] = [
     example: { input: { channel_id: '1234567890', limit: 3 }, output: '[alice] Hey, can you check the printer status?\n[caboose-bot] Printer is idle. Last print: 2h ago.\n[bob] Nice!' },
   },
 
+  {
+    name: 'discord_webhook_post',
+    category: 'discord',
+    tier: 'hosted',
+    tags: ['write'],
+    description: 'Post a message via Discord incoming webhook (no bot token required).',
+    params: [
+      { name: 'content', type: 'string', required: true, description: 'Message content' },
+      { name: 'webhook_url', type: 'string', required: false, description: 'Webhook URL (overrides DISCORD_WEBHOOK_URL env var)' },
+    ],
+    example: { input: { content: 'Deploy complete ✅' }, output: 'Webhook message posted.' },
+  },
+
   // ── Database ───────────────────────────────────────────────────────────────
   {
     name: 'postgres_query',
@@ -620,7 +636,7 @@ export const TOOLS: ToolDef[] = [
   {
     name: 'si_scan_dir',
     category: 'selfimprove',
-    tier: 'both',
+    tier: 'hosted',
     tags: ['ai', 'analysis'],
     description: 'Scan a directory and generate improvement suggestions using Claude. Respects the allowlist to decide auto-apply vs require-approval.',
     params: [
@@ -632,7 +648,7 @@ export const TOOLS: ToolDef[] = [
   {
     name: 'si_list_pending',
     category: 'selfimprove',
-    tier: 'both',
+    tier: 'hosted',
     tags: ['ai', 'read-only'],
     description: 'List all pending improvement suggestions awaiting review.',
     params: [],
@@ -641,7 +657,7 @@ export const TOOLS: ToolDef[] = [
   {
     name: 'si_approve',
     category: 'selfimprove',
-    tier: 'both',
+    tier: 'hosted',
     tags: ['ai', 'write'],
     description: 'Approve and apply a pending improvement suggestion.',
     params: [
@@ -652,11 +668,73 @@ export const TOOLS: ToolDef[] = [
   {
     name: 'si_tech_digest',
     category: 'selfimprove',
-    tier: 'both',
+    tier: 'hosted',
     tags: ['ai', 'read-only'],
     description: 'Generate a tech digest from tracked sources: summaries, trends, and action items.',
     params: [],
     example: { input: {}, output: 'Tech Digest — 2026-03-19\n\n3 sources checked:\n• Go 1.24 release notes — 2 action items\n• Tailwind v4 migration — 1 action item' },
+  },
+
+  // ── Self-Improve (continued) ──────────────────────────────────────────────
+  {
+    name: 'si_git_diff',
+    category: 'selfimprove',
+    tier: 'hosted',
+    tags: ['ai', 'git', 'read-only'],
+    description: 'Show git diff for a repository to generate improvement suggestions.',
+    params: [
+      { name: 'path', type: 'string', required: false, description: 'Repository path (default: current directory)' },
+    ],
+    example: { input: { path: '.' }, output: 'Diff captured. Use si_suggest to create suggestions from the diff.' },
+  },
+  {
+    name: 'si_suggest',
+    category: 'selfimprove',
+    tier: 'hosted',
+    tags: ['ai', 'write'],
+    description: 'Create a pending improvement suggestion manually.',
+    params: [
+      { name: 'title', type: 'string', required: true, description: 'Short title for the suggestion' },
+      { name: 'description', type: 'string', required: true, description: 'Detailed description of the improvement' },
+      { name: 'category', type: 'string', required: false, description: 'Category: quality, security, performance, ux, refactoring' },
+      { name: 'file', type: 'string', required: false, description: 'Target file path' },
+      { name: 'diff', type: 'string', required: false, description: 'Unified diff to apply' },
+    ],
+    example: { input: { title: 'add-tests', description: 'Add unit tests for auth handlers', category: 'quality' }, output: 'Suggestion add-tests created.' },
+  },
+  {
+    name: 'si_reject',
+    category: 'selfimprove',
+    tier: 'hosted',
+    tags: ['ai', 'write'],
+    description: 'Reject and discard a pending improvement suggestion.',
+    params: [
+      { name: 'id', type: 'string', required: true, description: 'Suggestion ID from si_list_pending' },
+    ],
+    example: { input: { id: 'add-auth-tests' }, output: 'Suggestion add-auth-tests rejected and removed.' },
+  },
+  {
+    name: 'si_apply',
+    category: 'selfimprove',
+    tier: 'hosted',
+    tags: ['ai', 'write'],
+    description: 'Apply an approved suggestion\'s diff to the target file.',
+    params: [
+      { name: 'id', type: 'string', required: true, description: 'Approved suggestion ID' },
+    ],
+    example: { input: { id: 'add-auth-tests' }, output: 'Suggestion add-auth-tests applied: tools/auth_test.go patched.' },
+  },
+  {
+    name: 'si_report_error',
+    category: 'selfimprove',
+    tier: 'hosted',
+    tags: ['ai', 'write'],
+    description: 'Record an error for later triage.',
+    params: [
+      { name: 'error', type: 'string', required: true, description: 'Error message or stack trace' },
+      { name: 'context', type: 'string', required: false, description: 'Additional context (file, tool, user action)' },
+    ],
+    example: { input: { error: 'calendar_list: token expired', context: 'user requested calendar events' }, output: 'Error recorded: err-2026-03-20-001' },
   },
 
   // ── Sources ────────────────────────────────────────────────────────────────
@@ -674,11 +752,55 @@ export const TOOLS: ToolDef[] = [
     example: { input: { name: 'Go Blog', url: 'https://go.dev/blog/feed.atom', type: 'atom' }, output: 'Source "Go Blog" added.' },
   },
   {
+    name: 'source_list',
+    category: 'sources',
+    tier: 'hosted',
+    tags: ['rss', 'read-only'],
+    description: 'List all watched sources with their type and last-checked time.',
+    params: [],
+    example: { input: {}, output: '3 sources:\n• Go Blog (atom) — checked 2h ago\n• Tailwind CSS (rss) — checked 1d ago\n• anthropic/sdk-go (github_repo) — checked 30m ago' },
+  },
+  {
+    name: 'source_edit',
+    category: 'sources',
+    tier: 'hosted',
+    tags: ['rss', 'write'],
+    description: 'Edit an existing source by ID (update name, URL, or type).',
+    params: [
+      { name: 'id', type: 'string', required: true, description: 'Source ID from source_list' },
+      { name: 'name', type: 'string', required: false, description: 'New friendly name' },
+      { name: 'url', type: 'string', required: false, description: 'New URL' },
+    ],
+    example: { input: { id: 'src-1', name: 'Go Official Blog' }, output: 'Source src-1 updated.' },
+  },
+  {
+    name: 'source_remove',
+    category: 'sources',
+    tier: 'hosted',
+    tags: ['rss', 'write'],
+    description: 'Remove a tracked source by ID.',
+    params: [
+      { name: 'id', type: 'string', required: true, description: 'Source ID from source_list' },
+    ],
+    example: { input: { id: 'src-1' }, output: 'Source src-1 removed.' },
+  },
+  {
+    name: 'source_check',
+    category: 'sources',
+    tier: 'hosted',
+    tags: ['rss', 'read-only'],
+    description: 'Check one or all sources for new activity since last check.',
+    params: [
+      { name: 'name', type: 'string', required: false, description: 'Source name to check (omit to check all)' },
+    ],
+    example: { input: {}, output: 'Checked 3 sources:\n• Go Blog: 1 new item\n• Tailwind CSS: no updates\n• anthropic/sdk-go: 2 new commits' },
+  },
+  {
     name: 'source_digest',
     category: 'sources',
     tier: 'hosted',
     tags: ['rss', 'read-only'],
-    description: 'Get a digest summary of one or all tracked sources.',
+    description: 'Check all sources and post a formatted digest to Slack or Discord.',
     params: [
       { name: 'name', type: 'string', required: true, description: 'Source name (or \'all\')' },
     ],
@@ -715,6 +837,38 @@ export const TOOLS: ToolDef[] = [
     params: [],
     example: { input: {}, output: 'Backend: GitHub Gist\nLast push: 2026-03-18 09:30\nLast pull: 2026-03-19 08:00\nFiles: 14' },
   },
+  {
+    name: 'cloudsync_setup',
+    category: 'cloudsync',
+    tier: 'hosted',
+    tags: ['config', 'write'],
+    description: 'First-time setup — create an S3 bucket or GitHub Gist and configure the sync backend.',
+    params: [
+      { name: 'backend', type: 'string', required: false, description: 'Backend: s3 or gist (default: gist)' },
+    ],
+    example: { input: { backend: 'gist' }, output: 'CloudSync configured: GitHub Gist gist:abc123. Run cloudsync_push to upload your config.' },
+  },
+  {
+    name: 'cloudsync_env_set',
+    category: 'cloudsync',
+    tier: 'hosted',
+    tags: ['config', 'write'],
+    description: 'Add or update an env var key=value in the encrypted sync bundle.',
+    params: [
+      { name: 'key', type: 'string', required: true, description: 'Environment variable name' },
+      { name: 'value', type: 'string', required: true, description: 'Environment variable value' },
+    ],
+    example: { input: { key: 'SLACK_TOKEN', value: 'xoxb-...' }, output: 'SLACK_TOKEN added to sync bundle. Run cloudsync_push to save.' },
+  },
+  {
+    name: 'cloudsync_env_list',
+    category: 'cloudsync',
+    tier: 'hosted',
+    tags: ['config', 'read-only'],
+    description: 'List env var keys stored in the sync bundle (values are not shown).',
+    params: [],
+    example: { input: {}, output: 'Env vars in sync bundle:\n- SLACK_TOKEN\n- DISCORD_TOKEN\n- GITHUB_TOKEN\n- POSTGRES_URL' },
+  },
 
   // ── Chezmoi ────────────────────────────────────────────────────────────────
   {
@@ -744,6 +898,77 @@ export const TOOLS: ToolDef[] = [
     params: [],
     example: { input: {}, output: '--- a/.zshrc\n+++ b/.zshrc\n@@ -12,3 +12,4 @@\n+alias k="kubectl"\n+alias kg="kubectl get"' },
   },
+  {
+    name: 'chezmoi_add',
+    category: 'chezmoi',
+    tier: 'local',
+    tags: ['dotfiles', 'write'],
+    description: 'Add a file or directory to chezmoi management.',
+    params: [
+      { name: 'path', type: 'string', required: true, description: 'Absolute or home-relative path to manage' },
+    ],
+    example: { input: { path: '~/.zshrc' }, output: 'Added ~/.zshrc to chezmoi source state.' },
+  },
+  {
+    name: 'chezmoi_forget',
+    category: 'chezmoi',
+    tier: 'local',
+    tags: ['dotfiles', 'write'],
+    description: 'Stop managing a file with chezmoi (leaves the target file intact).',
+    params: [
+      { name: 'path', type: 'string', required: true, description: 'Path of the managed file to forget' },
+    ],
+    example: { input: { path: '~/.zshrc' }, output: 'Removed ~/.zshrc from chezmoi (file left in place).' },
+  },
+  {
+    name: 'chezmoi_update',
+    category: 'chezmoi',
+    tier: 'local',
+    tags: ['dotfiles', 'write'],
+    description: 'Pull the latest changes from the chezmoi source repo and apply them.',
+    params: [],
+    example: { input: {}, output: 'chezmoi update: pulled 2 commits, applied 3 files.' },
+  },
+  {
+    name: 'chezmoi_init',
+    category: 'chezmoi',
+    tier: 'local',
+    tags: ['dotfiles', 'write'],
+    description: 'Initialize chezmoi, optionally from a git repo URL.',
+    params: [
+      { name: 'repo', type: 'string', required: false, description: 'Git repo URL to initialize from' },
+    ],
+    example: { input: { repo: 'https://github.com/cxm6467/dotfiles' }, output: 'chezmoi initialized from https://github.com/cxm6467/dotfiles' },
+  },
+  {
+    name: 'chezmoi_data',
+    category: 'chezmoi',
+    tier: 'local',
+    tags: ['dotfiles', 'read-only'],
+    description: 'Show chezmoi template data variables (hostname, os, arch, custom data).',
+    params: [],
+    example: { input: {}, output: 'chezmoi data:\n  hostname: pi5\n  os: linux\n  arch: arm64\n  email: chris@example.com' },
+  },
+  {
+    name: 'chezmoi_managed',
+    category: 'chezmoi',
+    tier: 'local',
+    tags: ['dotfiles', 'read-only'],
+    description: 'List all files and directories currently managed by chezmoi.',
+    params: [],
+    example: { input: {}, output: '~/.zshrc\n~/.gitconfig\n~/.config/nvim/init.lua\n~/.ssh/config' },
+  },
+  {
+    name: 'chezmoi_git',
+    category: 'chezmoi',
+    tier: 'local',
+    tags: ['dotfiles', 'git'],
+    description: 'Run a git command inside the chezmoi source directory.',
+    params: [
+      { name: 'args', type: 'string', required: true, description: 'Git arguments (e.g. "status", "log --oneline -5")' },
+    ],
+    example: { input: { args: 'log --oneline -3' }, output: 'a1b2c3d Add .zshrc aliases\ne4f5g6h Init dotfiles\n7h8i9j0 Add nvim config' },
+  },
 
   // ── 3D Printing ────────────────────────────────────────────────────────────
   {
@@ -754,6 +979,17 @@ export const TOOLS: ToolDef[] = [
     description: 'Check the Bambu A1 printer status via MQTT/TLS: print progress, temperatures, filament.',
     params: [],
     example: { input: {}, output: 'Printer: Bambu Lab A1\nStatus: Printing (72%)\nFile: benchy.3mf\nETA: 14m 32s\nNozzle: 220°C | Bed: 55°C\nFilament: PLA White (180g remaining)' },
+  },
+  {
+    name: 'bambu_print',
+    category: 'printing',
+    tier: 'local',
+    tags: ['bambu', 'mqtt', 'write'],
+    description: 'Start a print job on the Bambu A1 printer from a .3mf or .gcode file path.',
+    params: [
+      { name: 'file', type: 'string', required: true, description: 'Path to .3mf or .gcode file' },
+    ],
+    example: { input: { file: '/tmp/benchy.3mf' }, output: 'Print job started: benchy.3mf' },
   },
   {
     name: 'bambu_stop',
@@ -781,7 +1017,7 @@ export const TOOLS: ToolDef[] = [
   {
     name: 'sandbox_run',
     category: 'sandbox',
-    tier: 'local',
+    tier: 'hosted',
     tags: ['preview', 'safety'],
     description: 'Run a command in a temp directory sandbox and preview the changes without touching your real files.',
     params: [
@@ -792,18 +1028,52 @@ export const TOOLS: ToolDef[] = [
   {
     name: 'sandbox_diff',
     category: 'sandbox',
-    tier: 'local',
+    tier: 'hosted',
     tags: ['preview', 'read-only'],
     description: 'Show a diff of changes made in the last sandbox run.',
     params: [],
     example: { input: {}, output: '--- a/main.go\n+++ b/main.go\n@@ -5,1 +5,1 @@\n-foo := "old"\n+bar := "old"' },
   },
 
+  // ── Sandbox (continued) ───────────────────────────────────────────────────
+  {
+    name: 'sandbox_list',
+    category: 'sandbox',
+    tier: 'hosted',
+    tags: ['preview', 'read-only'],
+    description: 'List all active sandboxes with their ID, source directory, and age.',
+    params: [],
+    example: { input: {}, output: '2 active sandboxes:\n• sb-1742394600 — /home/caboose/dev/caboose-mcp (12m ago)\n• sb-1742391000 — /tmp/test-project (1h ago)' },
+  },
+  {
+    name: 'sandbox_suggestion',
+    category: 'sandbox',
+    tier: 'hosted',
+    tags: ['preview', 'ai'],
+    description: 'Preview a pending si_ suggestion in a sandbox without applying it to the real files.',
+    params: [
+      { name: 'id', type: 'string', required: true, description: 'Suggestion ID from si_list_pending' },
+    ],
+    example: { input: { id: 'add-auth-tests' }, output: 'Sandbox sb-1742394600 created.\nDiff preview:\n+++ tools/auth_test.go ...' },
+  },
+  {
+    name: 'sandbox_clean',
+    category: 'sandbox',
+    tier: 'hosted',
+    tags: ['preview', 'write'],
+    description: 'Delete sandboxes by ID or by age (all sandboxes older than N minutes).',
+    params: [
+      { name: 'id', type: 'string', required: false, description: 'Sandbox ID to delete' },
+      { name: 'older_than', type: 'number', required: false, description: 'Delete all sandboxes older than N minutes' },
+    ],
+    example: { input: { older_than: 60 }, output: 'Cleaned 2 sandboxes older than 60 minutes.' },
+  },
+
   // ── Audit ──────────────────────────────────────────────────────────────────
   {
     name: 'audit_list',
     category: 'audit',
-    tier: 'both',
+    tier: 'hosted',
     tags: ['read-only', 'transparency'],
     description: 'Show the audit log of recent tool invocations with timestamps and results.',
     params: [
@@ -814,7 +1084,7 @@ export const TOOLS: ToolDef[] = [
   {
     name: 'audit_pending',
     category: 'audit',
-    tier: 'both',
+    tier: 'hosted',
     tags: ['gate', 'read-only'],
     description: 'List commands awaiting approval in the audit gate queue.',
     params: [],
@@ -823,13 +1093,35 @@ export const TOOLS: ToolDef[] = [
   {
     name: 'approve_execution',
     category: 'audit',
-    tier: 'both',
+    tier: 'hosted',
     tags: ['gate', 'write'],
     description: 'Approve a gated command, executing it and logging the result.',
     params: [
       { name: 'id', type: 'string', required: true, description: 'Pending execution ID from audit_pending' },
     ],
     example: { input: { id: 'exec-1742394600' }, output: 'Approved and executed: rm -rf /tmp/old-builds\nResult: Removed 42 files (1.2 GB freed).' },
+  },
+  {
+    name: 'audit_config',
+    category: 'audit',
+    tier: 'hosted',
+    tags: ['config', 'gate'],
+    description: 'View or modify the audit gate configuration (gate mode on/off, gated tool list).',
+    params: [
+      { name: 'gate_mode', type: 'string', required: false, description: 'Gate mode: off, log, gate' },
+    ],
+    example: { input: {}, output: 'Gate mode: gate\nGated tools: execute_command, env_fix\nLog: ~/.claude/audit/audit.log' },
+  },
+  {
+    name: 'deny_execution',
+    category: 'audit',
+    tier: 'hosted',
+    tags: ['gate', 'write'],
+    description: 'Deny a gated command — removes it from the pending queue without executing.',
+    params: [
+      { name: 'id', type: 'string', required: true, description: 'Pending execution ID from audit_pending' },
+    ],
+    example: { input: { id: 'exec-1742394600' }, output: 'Execution exec-1742394600 denied and removed from queue.' },
   },
 
   // ── Toolsmith ──────────────────────────────────────────────────────────────
@@ -852,7 +1144,28 @@ export const TOOLS: ToolDef[] = [
     tags: ['meta', 'read-only'],
     description: 'List all registered MCP tools with their descriptions.',
     params: [],
-    example: { input: {}, output: '108 tools registered:\n• calendar_today — Return today\'s date...\n• calendar_list — List upcoming Google Calendar events...' },
+    example: { input: {}, output: '117 tools registered:\n• calendar_today — Return today\'s date...\n• calendar_list — List upcoming Google Calendar events...' },
+  },
+  {
+    name: 'tool_write',
+    category: 'toolsmith',
+    tier: 'local',
+    tags: ['meta', 'write'],
+    description: 'Write Go source to tools/<file>.go and patch main.go to register it.',
+    params: [
+      { name: 'filename', type: 'string', required: true, description: 'Target filename under tools/ (e.g. payments.go)' },
+      { name: 'source', type: 'string', required: true, description: 'Go source code to write' },
+    ],
+    example: { input: { filename: 'payments.go', source: 'package tools...' }, output: 'Wrote tools/payments.go and patched main.go.' },
+  },
+  {
+    name: 'tool_rebuild',
+    category: 'toolsmith',
+    tier: 'local',
+    tags: ['meta', 'write'],
+    description: 'Run go build in the server package and return compiler output.',
+    params: [],
+    example: { input: {}, output: 'Build succeeded (0 errors).' },
   },
 
   // ── Mermaid ────────────────────────────────────────────────────────────────
@@ -884,6 +1197,18 @@ export const TOOLS: ToolDef[] = [
       { name: 'query', type: 'string', required: true, description: 'Natural language question about your codebase' },
     ],
     example: { input: { query: 'How does the JWT token verification work?' }, output: 'JWT verification happens in VerifyJWT (tools/auth.go:273)...' },
+  },
+  {
+    name: 'greptile_index',
+    category: 'misc',
+    tier: 'hosted',
+    tags: ['ai', 'code-search', 'write'],
+    description: 'Trigger Greptile to index a GitHub repository so it can be queried.',
+    params: [
+      { name: 'repo', type: 'string', required: true, description: 'GitHub repo in owner/name format (e.g. caboose-mcp/caboose-mcp)' },
+      { name: 'branch', type: 'string', required: false, description: 'Branch to index (default: main)' },
+    ],
+    example: { input: { repo: 'caboose-mcp/caboose-mcp' }, output: 'Indexing started for caboose-mcp/caboose-mcp@main. Check back in a few minutes.' },
   },
 
   // ── Jokes ──────────────────────────────────────────────────────────────────
@@ -931,6 +1256,152 @@ export const TOOLS: ToolDef[] = [
     description: 'Check the current setup status — which services are configured, which are missing.',
     params: [],
     example: { input: {}, output: '✓ Google Calendar\n✓ Slack\n✓ Discord\n✗ Bambu (BAMBU_IP not set)\n✗ PostgreSQL (POSTGRES_URL not set)' },
+  },
+  {
+    name: 'setup_init_dirs',
+    category: 'misc',
+    tier: 'hosted',
+    tags: ['config', 'write'],
+    description: 'Initialize all ~/.claude/ subdirectories used by caboose-mcp.',
+    params: [],
+    example: { input: {}, output: 'Created: ~/.claude/pending, ~/.claude/errors, ~/.claude/learning, ~/.claude/focus, ~/.claude/audit, ~/.claude/secrets, ~/.claude/agents' },
+  },
+  {
+    name: 'setup_write_env',
+    category: 'misc',
+    tier: 'hosted',
+    tags: ['config', 'write'],
+    description: 'Write a .env file with provided key=value pairs.',
+    params: [
+      { name: 'pairs', type: 'string', required: true, description: 'Newline-separated KEY=VALUE pairs' },
+      { name: 'path', type: 'string', required: false, description: 'Output path (default: .env)' },
+    ],
+    example: { input: { pairs: 'SLACK_TOKEN=xoxb-...\nDISCORD_TOKEN=...' }, output: '.env written (2 vars).' },
+  },
+  {
+    name: 'setup_n8n_workflows',
+    category: 'misc',
+    tier: 'hosted',
+    tags: ['config', 'read-only'],
+    description: 'Return example n8n workflow JSON for integrating caboose-mcp via webhook.',
+    params: [],
+    example: { input: {}, output: '{ "nodes": [...], "connections": {...} }' },
+  },
+  {
+    name: 'setup_github_mcp_info',
+    category: 'misc',
+    tier: 'hosted',
+    tags: ['config', 'read-only'],
+    description: 'Explain the difference between the GitHub MCP server and caboose-mcp.',
+    params: [],
+    example: { input: {}, output: 'GitHub MCP server provides GitHub-specific tools. caboose-mcp wraps the gh CLI and adds personal productivity tools. Both can coexist.' },
+  },
+
+  // ── Claude Files ───────────────────────────────────────────────────────────
+  {
+    name: 'claude_read_file',
+    category: 'claude',
+    tier: 'hosted',
+    tags: ['files', 'read-only'],
+    description: 'Read a file under ~/.claude/ by relative path.',
+    params: [
+      { name: 'path', type: 'string', required: true, description: 'Relative path under ~/.claude/ (e.g. notes.md)' },
+    ],
+    example: { input: { path: 'notes.md' }, output: '# Notes\n\n- [2026-03-19] #todo Investigate JWT refresh...' },
+  },
+  {
+    name: 'claude_write_file',
+    category: 'claude',
+    tier: 'hosted',
+    tags: ['files', 'write'],
+    description: 'Write content to a file under ~/.claude/.',
+    params: [
+      { name: 'path', type: 'string', required: true, description: 'Relative path under ~/.claude/' },
+      { name: 'content', type: 'string', required: true, description: 'File content to write' },
+    ],
+    example: { input: { path: 'persona.json', content: '{"tone":"casual"}' }, output: 'Written: ~/.claude/persona.json (18 bytes).' },
+  },
+  {
+    name: 'claude_append_memory',
+    category: 'claude',
+    tier: 'hosted',
+    tags: ['files', 'write'],
+    description: 'Append a line to CLAUDE.md or a named memory file in ~/.claude/memory/.',
+    params: [
+      { name: 'content', type: 'string', required: true, description: 'Content to append' },
+      { name: 'file', type: 'string', required: false, description: 'Memory filename (default: CLAUDE.md)' },
+    ],
+    example: { input: { content: 'Always use bun for JS projects.' }, output: 'Appended to ~/.claude/CLAUDE.md.' },
+  },
+  {
+    name: 'claude_list_files',
+    category: 'claude',
+    tier: 'hosted',
+    tags: ['files', 'read-only'],
+    description: 'List files and directories under ~/.claude/.',
+    params: [
+      { name: 'path', type: 'string', required: false, description: 'Subdirectory to list (default: root)' },
+    ],
+    example: { input: {}, output: 'notes.md\npersona.json\nfocus/\nlearning/\npending/\nsecrets/' },
+  },
+
+  // ── Environment ────────────────────────────────────────────────────────────
+  {
+    name: 'env_check',
+    category: 'env',
+    tier: 'hosted',
+    tags: ['devtools', 'read-only'],
+    description: 'Check which dev tools are installed and report their versions. Shows install commands for missing tools.',
+    params: [
+      { name: 'missing_only', type: 'boolean', required: false, description: 'Only list missing tools (default false)' },
+    ],
+    sandboxable: true,
+    example: { input: {}, output: '## Installed (14)\n✅  node             v22.3.0\n✅  go               go version go1.24 linux/arm64\n...\n## Missing (2)\n❌  uv' },
+  },
+  {
+    name: 'env_fix',
+    category: 'env',
+    tier: 'hosted',
+    tags: ['devtools', 'write', 'gate'],
+    description: 'Install one or all missing dev tools via apt-get, brew, or alternative install command. Gated by audit.',
+    params: [
+      { name: 'tool', type: 'string', required: false, description: 'Tool name to install (omit to install all missing)' },
+      { name: 'method', type: 'string', required: false, description: 'Install method: apt, brew, or alt (default: apt)' },
+    ],
+    example: { input: { tool: 'pre-commit', method: 'alt' }, output: '→ Installing pre-commit: pip install pre-commit\nSuccessfully installed pre-commit-3.7.0' },
+  },
+
+  // ── Agency ─────────────────────────────────────────────────────────────────
+  {
+    name: 'agency_list',
+    category: 'agency',
+    tier: 'local',
+    tags: ['persona', 'read-only'],
+    description: 'List all loaded agent spec files from ~/.claude/agents/.',
+    params: [],
+    example: { input: {}, output: '4 agent specs loaded:\n• backend-engineer — "Backend & API specialist"\n• devops — "DevOps & Infrastructure"\n• data-analyst — "Data Analysis"\n• creative — "Creative writing & UX"' },
+  },
+  {
+    name: 'agency_detect',
+    category: 'agency',
+    tier: 'local',
+    tags: ['persona', 'ai'],
+    description: 'Detect the best-matching agent persona for a given message using keyword scoring.',
+    params: [
+      { name: 'message', type: 'string', required: true, description: 'User message to match against agent specs' },
+    ],
+    example: { input: { message: 'help me optimize this postgres query' }, output: 'Best match: backend-engineer (score: 4)\nPreferred tools: postgres_query, docker_inspect, health_report' },
+  },
+  {
+    name: 'agency_hint',
+    category: 'agency',
+    tier: 'local',
+    tags: ['persona', 'ai'],
+    description: 'Return a formatted tool hint block for a message — advisory guidance injected into the system prompt.',
+    params: [
+      { name: 'message', type: 'string', required: true, description: 'User message to generate hints for' },
+    ],
+    example: { input: { message: 'deploy the app and check logs' }, output: '💡 Agent hint (devops): prefer docker_logs, health_report, execute_command. Minimize: calendar, notes, printing.' },
   },
 ]
 
