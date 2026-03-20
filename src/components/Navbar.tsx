@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { BookOpen, FlaskConical, KeyRound, Clock, Menu, X } from 'lucide-react'
+import { BookOpen, FlaskConical, KeyRound, Clock, Menu, X, Layers } from 'lucide-react'
 
 const NAV = [
   { to: '/tools', label: 'Tools', icon: BookOpen },
   { to: '/sandbox', label: 'Sandbox', icon: FlaskConical },
+  { to: '/architecture', label: 'Architecture', icon: Layers },
   { to: '/auth', label: 'Auth', icon: KeyRound },
   { to: '/changelog', label: 'Changelog', icon: Clock },
 ]

@@ -9,6 +9,7 @@ import Sandbox from './pages/Sandbox'
 import AuthPortal from './pages/AuthPortal'
 import Changelog from './pages/Changelog'
 import ToolDetail from './pages/ToolDetail'
+import Architecture from './pages/Architecture'
 
 export default function App() {
   const [experimental, setExperimental] = useState(true)
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/sandbox" element={<Sandbox />} />
             <Route path="/auth" element={<AuthPortal />} />
             <Route path="/changelog" element={<Changelog />} />
+            <Route path="/architecture" element={<Architecture />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
