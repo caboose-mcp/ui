@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ExternalLink, AlertCircle } from 'lucide-react'
 
 const GAMMA_URLS = {
@@ -6,21 +6,50 @@ const GAMMA_URLS = {
   alternative: 'https://gamma.app/docs/xwh277cvfvw4d2c',
 }
 
+const LOAD_TIMEOUT_MS = 15000
+
 export default function Architecture() {
   const [useAlternative, setUseAlternative] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const [hasError, setHasError] = useState(false)
+  const loadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const currentUrl = useAlternative ? GAMMA_URLS.alternative : GAMMA_URLS.primary
   const embedUrl = currentUrl.replace('/docs/', '/embed/docs/')
 
-  const handleToggle = () => {
+  useEffect(() => {
     setIsLoaded(false)
     setHasError(false)
+
+    loadTimeoutRef.current = setTimeout(() => {
+      setHasError(true)
+      setIsLoaded(true)
+    }, LOAD_TIMEOUT_MS)
+
+    return () => {
+      if (loadTimeoutRef.current !== null) {
+        clearTimeout(loadTimeoutRef.current)
+      }
+    }
+  }, [embedUrl])
+
+  const handleToggle = () => {
     setUseAlternative(prev => !prev)
   }
 
+  const handleIframeLoad = () => {
+    if (loadTimeoutRef.current !== null) {
+      clearTimeout(loadTimeoutRef.current)
+      loadTimeoutRef.current = null
+    }
+    setIsLoaded(true)
+  }
+
   const handleIframeError = () => {
+    if (loadTimeoutRef.current !== null) {
+      clearTimeout(loadTimeoutRef.current)
+      loadTimeoutRef.current = null
+    }
     setHasError(true)
     setIsLoaded(true)
   }
@@ -103,7 +132,7 @@ export default function Architecture() {
                 sandbox="allow-same-origin allow-scripts allow-popups allow-presentation allow-forms allow-top-navigation-by-user-activation"
                 referrerPolicy="strict-origin-when-cross-origin"
                 loading="lazy"
-                onLoad={() => setIsLoaded(true)}
+                onLoad={handleIframeLoad}
                 onError={handleIframeError}
               />
             </div>
