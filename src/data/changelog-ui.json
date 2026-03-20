@@ -1,0 +1,402 @@
+[
+  {
+    "hash": "e0f6ac3da5ed3dc90a926575ee42b0171531ec02",
+    "date": "2026-03-20T01:09:46-04:00",
+    "subject": "Merge pull request #15 from caboose-mcp/copilot/sub-pr-13-again",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "b8c7245f27fceb826aa6f74847ff454a293481ee",
+    "date": "2026-03-20T05:02:53Z",
+    "subject": "fix: add timeout-based fallback to reliably detect iframe embed failures",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "f300b0f43842ccbc8590e71200a8de73d09c88cf",
+    "date": "2026-03-20T04:59:15Z",
+    "subject": "Initial plan",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "946a5799947a3b770622e613c9ea537d297e6f22",
+    "date": "2026-03-20T00:55:41-04:00",
+    "subject": "Update src/pages/Architecture.tsx",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "a6a583b715d1bd23e15ab70e715e2fc508774fc0",
+    "date": "2026-03-20T00:51:56-04:00",
+    "subject": "fix: add graceful error handling for Gamma embed 404 failure",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "5e40b0c7cad567148a49038421bb81512d1ad638",
+    "date": "2026-03-20T00:48:29-04:00",
+    "subject": "fix: improve iframe sandbox configuration for Gamma embed",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "cdd601748e33e1cf0d6cc37800129bcb1db8b451",
+    "date": "2026-03-20T00:44:03-04:00",
+    "subject": "Merge pull request #10 from caboose-mcp/fix/gamma-slideshow-embed",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "7db36fec5d9e03de619022eb079bb120e235c3be",
+    "date": "2026-03-20T00:37:57-04:00",
+    "subject": "Merge pull request #11 from caboose-mcp/copilot/sub-pr-10",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "6ea1aeaf398693867af86779776c0fda8be125e0",
+    "date": "2026-03-20T04:36:40Z",
+    "subject": "fix: hide loading overlay once iframe fires onLoad in Architecture component",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "eb560e1e3233870f215b86100c1783dd3b252c9e",
+    "date": "2026-03-20T04:34:28Z",
+    "subject": "Initial plan",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "079f1dfa88f807e29d72fd71c4ee9c764ddcc967",
+    "date": "2026-03-20T00:34:10-04:00",
+    "subject": "Update src/pages/Architecture.tsx",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "5ec047cbbd451e92533d0355fc00104cc758a8bc",
+    "date": "2026-03-20T00:24:04-04:00",
+    "subject": "fix: resolve Gamma iframe embedding issues with enhanced Architecture component",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "cedf092e3fdc672277ba0451e290f291a399c256",
+    "date": "2026-03-20T00:15:20-04:00",
+    "subject": "Merge pull request #6 from caboose-mcp/fix/a11y-improvements",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "ed78f460896f5c89b0bfec0ab6652a10259cfac6",
+    "date": "2026-03-19T22:09:40-04:00",
+    "subject": "fix: implement comprehensive accessibility (a11y) improvements",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "31c2315bae3c5ba62b73603659d1dc2539f69607",
+    "date": "2026-03-19T23:48:22-04:00",
+    "subject": "Merge pull request #5 from caboose-mcp/feat/theme-support",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "f510bc55ca3e046eed27ad609164878f1d9d7846",
+    "date": "2026-03-19T23:47:11-04:00",
+    "subject": "Merge branch 'main' into feat/theme-support",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "8b548dabf8cf82843c3e2099be109df1668f57b4",
+    "date": "2026-03-19T22:54:42-04:00",
+    "subject": "Merge pull request #8 from caboose-mcp/copilot/sub-pr-5-again",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "5f05f5f8f30ebc623f0ac3e2852e5d6d3dd3558e",
+    "date": "2026-03-20T02:53:23Z",
+    "subject": "Initial plan",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "ba01cd0312fd7efeac5739e80fd1003f38fd6941",
+    "date": "2026-03-19T22:52:11-04:00",
+    "subject": "Merge pull request #7 from caboose-mcp/copilot/sub-pr-5",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "e853a569055cf8271c421c62b278592d58943757",
+    "date": "2026-03-20T02:38:25Z",
+    "subject": "fix: address all PR review comments on theme system",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "607d03c936034283e6986386cf2b03b39cfdde2e",
+    "date": "2026-03-20T02:34:15Z",
+    "subject": "Initial plan",
+    "author": "copilot-swe-agent[bot]",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "b23fba482c99cd4678f6ebc81238265733c89506",
+    "date": "2026-03-19T22:23:14-04:00",
+    "subject": "Merge pull request #4 from caboose-mcp/feat/architecture-slideshow",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "d26d2a58120587d6efdd7e8c3adb909df0f3e81e",
+    "date": "2026-03-19T22:21:39-04:00",
+    "subject": "Update src/pages/Architecture.tsx",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "8c3308a0db5e43bed716dd2cc71f797932ef92af",
+    "date": "2026-03-19T22:21:29-04:00",
+    "subject": "Update src/pages/Architecture.tsx",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "89cc74cdee58db12f2aeff04c02efa98e8c25817",
+    "date": "2026-03-19T20:44:43-04:00",
+    "subject": "feat: add comprehensive theme support (light/dark/system)",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "d81bf71eccd5da48568c1e0b2118b291965bcc92",
+    "date": "2026-03-19T20:41:30-04:00",
+    "subject": "feat: add architecture slideshow page with Gamma embed",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "6fc2f75cf6e8849a72f0a26d259065ff8ea1589f",
+    "date": "2026-03-19T16:24:39-04:00",
+    "subject": "Merge pull request #3 from caboose-mcp/feat/logo-favicon",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "0ab9bc5a977c00afe6f6bd8b98ba9deea845a3d1",
+    "date": "2026-03-19T16:08:14-04:00",
+    "subject": "feat: use logo as favicon, fix /ui/ paths in index.html",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "9cb35ef46a7c85789ad0cd0fd03881246f996883",
+    "date": "2026-03-19T15:41:43-04:00",
+    "subject": "ci: fix shell injection from multi-line commit messages",
+    "author": "Chris",
+    "tags": [
+      "ci"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "d6687469110fe8b6755f76bf19cf9bd9cdc5a7ed",
+    "date": "2026-03-19T15:17:45-04:00",
+    "subject": "fix: add eslint.config.js for ESLint v9, set default changelog limit to 10",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "31afb5bb1b659100315bb95b90fa423848165193",
+    "date": "2026-03-19T15:06:55-04:00",
+    "subject": "Merge pull request #2 from caboose-mcp/cleanup/changelog-improvements",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "089bd971830b812848b0461dff0db8c52c371e26",
+    "date": "2026-03-19T15:04:57-04:00",
+    "subject": "Potential fix for pull request finding",
+    "author": "Chris",
+    "tags": [
+      "other"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "b6b104dfe32f0a476d8bfb77aa55df4a0d48adc1",
+    "date": "2026-03-19T14:58:38-04:00",
+    "subject": "fix: logo path, GitHub org URL, add changelog search/filter/sort/limit",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "2b56200cec996b11c7cd8c9056b0d2befca0e7d3",
+    "date": "2026-03-19T14:51:33-04:00",
+    "subject": "fix: remove /ui basename, site is deployed at root",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "61fbb0df65d23fd5ee929bb8bd0b706dceced8bc",
+    "date": "2026-03-19T14:47:16-04:00",
+    "subject": "fix: add vite/client types for import.meta.env",
+    "author": "Chris Marasco",
+    "tags": [
+      "fix"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "4e20be09d8721814e21e11b9a951e9982eca4fd0",
+    "date": "2026-03-19T14:45:09-04:00",
+    "subject": "chore: update changelog from caboose-mcp@8320b88",
+    "author": "Chris",
+    "tags": [
+      "chore"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "a1ea8ae982af19c312603b539085d9c6387645ff",
+    "date": "2026-03-19T14:29:03-04:00",
+    "subject": "ci: fix gh pr create error handling",
+    "author": "Chris",
+    "tags": [
+      "ci"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "0e5e59746d391dc89a6a1fdf94714bd11c78aa1b",
+    "date": "2026-03-19T14:26:17-04:00",
+    "subject": "ci: remove token from public repo checkout",
+    "author": "Chris",
+    "tags": [
+      "ci"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "cf90630990f36add9635ad89bfb0d92e02bb1567",
+    "date": "2026-03-19T13:47:37-04:00",
+    "subject": "chore: add pnpm lockfile",
+    "author": "Chris Marasco",
+    "tags": [
+      "chore"
+    ],
+    "repo": "ui"
+  },
+  {
+    "hash": "fae0e899439e14b037aec857e9f0a4ac6c92ae85",
+    "date": "2026-03-19T13:45:10-04:00",
+    "subject": "feat: initial caboose-mcp-ui repo",
+    "author": "Chris Marasco",
+    "tags": [
+      "feat"
+    ],
+    "repo": "ui"
+  }
+]
