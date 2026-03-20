@@ -6,6 +6,7 @@ import {
   Shield, Bot, Server
 } from 'lucide-react'
 import { TOOL_COUNT } from '../data/tools'
+import Spotlight from '../components/Spotlight'
 import { fetchStats } from '../lib/api'
 
 const FEATURE_GROUPS = [
@@ -189,6 +190,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Spotlight */}
+      <Spotlight />
 
       {/* Feature groups */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
