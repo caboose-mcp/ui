@@ -1,3 +1,13 @@
+export type ServerStats = {
+  total: number
+}
+
+export async function fetchStats(): Promise<ServerStats> {
+  const res = await fetch(`${API_BASE}/api/stats`)
+  if (!res.ok) throw new Error(res.statusText)
+  return res.json() as Promise<ServerStats>
+}
+
 export type SandboxRequest = {
   tool: string
   args: Record<string, unknown>
