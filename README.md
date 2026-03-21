@@ -2,6 +2,8 @@
 
 React/Vite/Tailwind frontend for [caboose-mcp](https://github.com/caboose-mcp/caboose-mcp), deployed to [ui.mcp.chrismarasco.io](https://ui.mcp.chrismarasco.io) via S3 + CloudFront.
 
+**Features:** Browse 144 MCP tools, search by name/category/tag, view tool details and parameters, test sandboxable tools, manage JWT tokens.
+
 `mcp.chrismarasco.io/ui` redirects here.
 
 ## Local dev
