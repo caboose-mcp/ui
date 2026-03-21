@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import Tools from './pages/Tools'
 import Sandbox from './pages/Sandbox'
 import AuthPortal from './pages/AuthPortal'
+import DiscordAuthCallback from './pages/DiscordAuthCallback'
 import Changelog from './pages/Changelog'
 import ToolDetail from './pages/ToolDetail'
 import Architecture from './pages/Architecture'
@@ -37,6 +38,7 @@ export default function App() {
               <Route path="/tools/:name" element={<ToolDetail />} />
               <Route path="/sandbox" element={<Sandbox />} />
               <Route path="/auth" element={<AuthPortal />} />
+              <Route path="/auth/callback" element={<DiscordAuthCallback />} />
               <Route path="/changelog" element={<Changelog />} />
               <Route path="/architecture" element={<Architecture />} />
               <Route path="*" element={<Navigate to="/" replace />} />

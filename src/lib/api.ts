@@ -53,3 +53,15 @@ export async function exchangeMagicLink(token: string): Promise<{
   }
   return res.json()
 }
+
+/**
+ * Initiates Discord OAuth login flow.
+ * This function redirects the user to Discord's OAuth consent page.
+ * After user authorizes, Discord redirects back to /auth/discord/callback,
+ * which in turn redirects to /auth/callback with the token in query params.
+ */
+export function initiateDiscordOAuth(): void {
+  const redirectUri = `${window.location.origin}/auth/discord/callback`
+  const params = new URLSearchParams({ redirect_uri: redirectUri })
+  window.location.href = `${API_BASE || window.location.origin}/auth/discord/start?${params}`
+}
