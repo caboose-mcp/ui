@@ -1,6 +1,6 @@
-# caboose-mcp UI
+# fafb UI
 
-React/Vite/Tailwind frontend for [caboose-mcp](https://github.com/caboose-mcp/caboose-mcp), deployed to [ui.mcp.chrismarasco.io](https://ui.mcp.chrismarasco.io) via S3 + CloudFront.
+React/Vite/Tailwind frontend for [fafb](https://github.com/caboose-mcp/caboose-mcp), deployed to [ui.mcp.chrismarasco.io](https://ui.mcp.chrismarasco.io) via S3 + CloudFront.
 
 **Features:** Browse 144 MCP tools, search by name/category/tag, view tool details and parameters, test sandboxable tools, manage JWT tokens.
 
@@ -19,7 +19,7 @@ The Vite dev server proxies `/api` and `/auth` to `http://localhost:8080` (the G
 ## Deploy flow
 
 ```
-caboose-mcp push to main
+fafb push to main
   └─ notify-ui.yml fires repository_dispatch
        └─ update-pr.yml regenerates changelog.json → opens PR
             └─ CI runs on PR
@@ -41,10 +41,10 @@ tofu apply
 
 | Name | Type | Value |
 |------|------|-------|
-| `AWS_ACCESS_KEY_ID` | Secret | Shared with caboose-mcp |
-| `AWS_SECRET_ACCESS_KEY` | Secret | Shared with caboose-mcp |
+| `AWS_ACCESS_KEY_ID` | Secret | Shared with fafb |
+| `AWS_SECRET_ACCESS_KEY` | Secret | Shared with fafb |
 | `TF_VAR_ROUTE53_ZONE_ID` | Secret | Route53 zone ID (empty if not using AWS DNS) |
-| `CABOOSE_MCP_READ_TOKEN` | Secret | Fine-grained PAT: Contents read on caboose-mcp/caboose-mcp (omit if public) |
+| `FAFB_READ_TOKEN` | Secret | Fine-grained PAT: Contents read on caboose-mcp/caboose-mcp (omit if public) |
 | `S3_BUCKET` | Variable | From `tofu output s3_bucket` |
 | `CLOUDFRONT_DISTRIBUTION_ID` | Variable | From `tofu output cloudfront_distribution_id` |
 | `VITE_API_BASE` | Variable | `https://mcp.chrismarasco.io` |
