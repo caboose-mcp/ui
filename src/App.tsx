@@ -13,6 +13,8 @@ import DiscordAuthCallback from './pages/DiscordAuthCallback'
 import Changelog from './pages/Changelog'
 import ToolDetail from './pages/ToolDetail'
 import Architecture from './pages/Architecture'
+import AdminCreateTool from './pages/AdminCreateTool'
+import AdminPendingTools from './pages/AdminPendingTools'
 
 export default function App() {
   const [experimental, setExperimental] = useState(true)
@@ -41,6 +43,8 @@ export default function App() {
               <Route path="/auth/callback" element={<DiscordAuthCallback />} />
               <Route path="/changelog" element={<Changelog />} />
               <Route path="/architecture" element={<Architecture />} />
+              <Route path="/admin/create-tool" element={<AdminCreateTool />} />
+              <Route path="/admin/pending-tools" element={<AdminPendingTools />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
