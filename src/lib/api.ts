@@ -54,6 +54,31 @@ export async function exchangeMagicLink(token: string): Promise<{
   return res.json()
 }
 
+export type MCPToolResult = {
+  success: boolean
+  output?: string
+  error?: string
+}
+
+export async function callMCPTool(
+  tool: string,
+  args: Record<string, unknown>
+): Promise<MCPToolResult> {
+  const res = await fetch(`${API_BASE}/api/mcp`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ tool, args }),
+  })
+
+  if (!res.ok) {
+    const text = await res.text()
+    return { success: false, error: `${res.status}: ${text}` }
+  }
+
+  return res.json() as Promise<MCPToolResult>
+}
+
+
 /**
  * Initiates Discord OAuth login flow.
  * This function redirects the user to Discord's OAuth consent page.

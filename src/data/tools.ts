@@ -1,6 +1,6 @@
 export type ParamDef = {
   name: string
-  type: 'string' | 'number' | 'boolean'
+  type: 'string' | 'number' | 'boolean' | 'array'
   required: boolean
   description: string
   default?: string
@@ -309,10 +309,10 @@ export const TOOLS: ToolDef[] = [
     description: `Link a Discord, Slack, or Google identity to a JWT token for SSO. Once linked, messages from that user automatically use this token's tool ACL.`,
     params: [
       {
-        name: 'Link a Discord, Slack, or Google identity to a JWT token for SSO. Once linked, messages from that user automatically use this token's tool ACL.',
+        name: 'identity_token',
         type: 'string',
         required: false,
-        description: ``,
+        description: `OAuth or platform identity token to link to the JWT for SSO`,
       },
       {
         name: 'jti',
@@ -645,10 +645,10 @@ export const TOOLS: ToolDef[] = [
     description: `Return today's date, day of week, week number, and days until common events.`,
     params: [
       {
-        name: 'Return today's date, day of week, week number, and days until common events.',
+        name: 'format',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Output format for the date information. Returns today's date, day of week, week number, and days until common events.`,
       },
     ],
     tier: 'hosted',
@@ -2112,10 +2112,10 @@ export const TOOLS: ToolDef[] = [
     description: `Upload the local notes.md to Google Drive as 'caboose-notes.md'. Requires Google Calendar auth (calendar_auth_url).`,
     params: [
       {
-        name: 'Upload the local notes.md to Google Drive as 'caboose-notes.md'. Requires Google Calendar auth (calendar_auth_url).',
+        name: 'destination',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Google Drive destination filename (defaults to 'caboose-notes.md'). Requires Google Calendar auth (calendar_auth_url).`,
       },
     ],
     tier: 'hosted',
@@ -2127,10 +2127,10 @@ export const TOOLS: ToolDef[] = [
     description: `Download 'caboose-notes.md' from Google Drive, overwriting the local notes.md.`,
     params: [
       {
-        name: 'Download 'caboose-notes.md' from Google Drive, overwriting the local notes.md.',
+        name: 'source',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Google Drive source filename to restore (defaults to 'caboose-notes.md'). Overwrites the local notes.md.`,
       },
     ],
     tier: 'hosted',
@@ -2190,10 +2190,10 @@ export const TOOLS: ToolDef[] = [
     description: `Approve a pending tool, commit to main, trigger CI/CD. Requires 'repo:admin' scope.`,
     params: [
       {
-        name: 'Approve a pending tool, commit to main, trigger CI/CD. Requires 'repo:admin' scope.',
+        name: 'auth_scope',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Required permission scope for this operation (repo:admin)`,
       },
       {
         name: 'tool_name',
@@ -2217,10 +2217,10 @@ export const TOOLS: ToolDef[] = [
     description: `Create a new tool draft. Validates input and stores in ~/.claude/pending-tools/ awaiting approval. Requires 'repo' scope.`,
     params: [
       {
-        name: 'Create a new tool draft. Validates input and stores in ~/.claude/pending-tools/ awaiting approval. Requires 'repo' scope.',
+        name: 'auth_scope',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Required permission scope for this operation (repo)`,
       },
       {
         name: 'name',
@@ -2274,10 +2274,10 @@ export const TOOLS: ToolDef[] = [
     description: `Trigger deployment of current main branch. Requires 'repo:admin' scope.`,
     params: [
       {
-        name: 'Trigger deployment of current main branch. Requires 'repo:admin' scope.',
+        name: 'auth_scope',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Required permission scope for this operation (repo:admin)`,
       },
       {
         name: 'service',
@@ -2301,10 +2301,10 @@ export const TOOLS: ToolDef[] = [
     description: `List all pending tool drafts awaiting approval. Requires 'repo' scope.`,
     params: [
       {
-        name: 'List all pending tool drafts awaiting approval. Requires 'repo' scope.',
+        name: 'auth_scope',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Required permission scope for this operation (repo)`,
       },
     ],
     tier: 'hosted',
@@ -2316,10 +2316,10 @@ export const TOOLS: ToolDef[] = [
     description: `Reject a pending tool and discard draft. Requires 'repo:admin' scope.`,
     params: [
       {
-        name: 'Reject a pending tool and discard draft. Requires 'repo:admin' scope.',
+        name: 'auth_scope',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Required permission scope for this operation (repo:admin)`,
       },
       {
         name: 'tool_name',
@@ -2343,10 +2343,10 @@ export const TOOLS: ToolDef[] = [
     description: `Manually trigger UI sync: extract all tools from Go source and update UI tools.ts. Requires 'repo' scope.`,
     params: [
       {
-        name: 'Manually trigger UI sync: extract all tools from Go source and update UI tools.ts. Requires 'repo' scope.',
+        name: 'auth_scope',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Required permission scope for this operation (repo)`,
       },
     ],
     tier: 'hosted',
@@ -2358,10 +2358,10 @@ export const TOOLS: ToolDef[] = [
     description: `Test a pending tool with sample input. Executes handler in isolated sandbox. Requires 'repo' scope.`,
     params: [
       {
-        name: 'Test a pending tool with sample input. Executes handler in isolated sandbox. Requires 'repo' scope.',
+        name: 'auth_scope',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Required permission scope for this operation (repo)`,
       },
       {
         name: 'tool_name',
@@ -2481,10 +2481,10 @@ export const TOOLS: ToolDef[] = [
     description: `Preview a pending improvement suggestion in a sandbox before approving it. Clones the suggestion's directory and runs its apply_cmd, then shows the diff.`,
     params: [
       {
-        name: 'Preview a pending improvement suggestion in a sandbox before approving it. Clones the suggestion's directory and runs its apply_cmd, then shows the diff.',
+        name: 'suggestion_dir',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Directory of the suggestion to preview in the sandbox. Clones the suggestion's directory and runs its apply_cmd, then shows the diff.`,
       },
       {
         name: 'id',
@@ -2601,10 +2601,10 @@ export const TOOLS: ToolDef[] = [
     description: `Explains how to use GitHub's official MCP server alongside fafb, and when each approach is better.`,
     params: [
       {
-        name: 'Explains how to use GitHub's official MCP server alongside fafb, and when each approach is better.',
+        name: 'topic',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Topic or question about using GitHub's official MCP server alongside fafb, and when each approach is better.`,
       },
     ],
     tier: 'hosted',
@@ -3358,3 +3358,24 @@ export const TOOLS: ToolDef[] = [
     tags: [],
   },
 ]
+
+export const TOOL_COUNT = TOOLS.length
+
+export const TOOL_MAP = new Map<string, ToolDef>(TOOLS.map(t => [t.name, t]))
+
+export const SANDBOX_TOOLS = TOOLS.filter(t => t.tier === 'hosted' || t.tier === 'both')
+
+export function searchTools(query: string): ToolDef[] {
+  const q = query.toLowerCase()
+  return TOOLS.filter(
+    t =>
+      t.name.includes(q) ||
+      t.description.toLowerCase().includes(q) ||
+      (t.tags ?? []).some(tag => tag.toLowerCase().includes(q))
+  )
+}
+
+export function getToolsByCategory(category: string): ToolDef[] {
+  if (category === 'all') return TOOLS
+  return TOOLS.filter(t => t.category === category)
+}
