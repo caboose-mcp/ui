@@ -78,7 +78,7 @@ export const TOOLS: ToolDef[] = [
         name: 'hint_format',
         type: 'string',
         required: false,
-        description: `Return a formatted context hint block for a message. Paste this into Claude's context to get context-aware tool preferences.`,
+        description: `Output format for the context hint block. Options: 'markdown' for a Markdown-formatted block, 'text' for plain text, or 'auto' to let the tool choose an appropriate format. Defaults to 'markdown' if omitted.`,
       },
       {
         name: 'message',
