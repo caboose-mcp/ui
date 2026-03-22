@@ -75,10 +75,10 @@ export const TOOLS: ToolDef[] = [
     description: `Return a formatted context hint block for a message. Paste this into Claude's context to get context-aware tool preferences.`,
     params: [
       {
-        name: 'Return a formatted context hint block for a message. Paste this into Claude's context to get context-aware tool preferences.',
+        name: 'hint_format',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Return a formatted context hint block for a message. Paste this into Claude's context to get context-aware tool preferences.`,
       },
       {
         name: 'message',
