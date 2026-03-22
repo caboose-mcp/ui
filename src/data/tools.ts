@@ -75,10 +75,10 @@ export const TOOLS: ToolDef[] = [
     description: `Return a formatted context hint block for a message. Paste this into Claude's context to get context-aware tool preferences.`,
     params: [
       {
-        name: 'Return a formatted context hint block for a message. Paste this into Claude's context to get context-aware tool preferences.',
+        name: 'hint_format',
         type: 'string',
         required: false,
-        description: ``,
+        description: `Output format for the context hint block. Options: 'markdown' for a Markdown-formatted block, 'text' for plain text, or 'auto' to let the tool choose an appropriate format. Defaults to 'markdown' if omitted.`,
       },
       {
         name: 'message',
@@ -910,27 +910,6 @@ export const TOOLS: ToolDef[] = [
       },
     ],
     tier: 'local',
-    tags: [],
-  },
-  {
-    name: 'chuck_norris_joke',
-    category: 'misc',
-    description: `Fetch a random Chuck Norris joke from the api.chucknorris.io API`,
-    params: [
-      {
-        name: 'Fetch a random Chuck Norris joke from the api.chucknorris.io API',
-        type: 'string',
-        required: false,
-        description: ``,
-      },
-      {
-        name: 'category',
-        type: 'string',
-        required: false,
-        description: `Optional category of joke (e.g. 'career', 'celebrity', 'explicit'). If not specified, returns a random joke.`,
-      },
-    ],
-    tier: 'hosted',
     tags: [],
   },
   {
