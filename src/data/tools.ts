@@ -913,27 +913,6 @@ export const TOOLS: ToolDef[] = [
     tags: [],
   },
   {
-    name: 'chuck_norris_joke',
-    category: 'misc',
-    description: `Fetch a random Chuck Norris joke from the api.chucknorris.io API`,
-    params: [
-      {
-        name: 'Fetch a random Chuck Norris joke from the api.chucknorris.io API',
-        type: 'string',
-        required: false,
-        description: ``,
-      },
-      {
-        name: 'category',
-        type: 'string',
-        required: false,
-        description: `Optional category of joke (e.g. 'career', 'celebrity', 'explicit'). If not specified, returns a random joke.`,
-      },
-    ],
-    tier: 'hosted',
-    tags: [],
-  },
-  {
     name: 'claude_append_memory',
     category: 'claude',
     description: `Append content to CLAUDE.md or a named memory file under CLAUDE_DIR.`,
